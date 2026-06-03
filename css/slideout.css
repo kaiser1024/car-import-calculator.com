@@ -1,3 +1,4 @@
 .slideout {
   transform: translate(-100%);
+  transition: transformX 0.3s ease;
   }
