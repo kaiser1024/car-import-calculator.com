@@ -4,6 +4,9 @@
   --bg-topbar: black;
 }
 
+.logo {
+  color: white;
+}
 
 span.brand-color {
   color: var(--brand-color);  
