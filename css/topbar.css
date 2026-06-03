@@ -1,10 +1,19 @@
-header .container {
-  background-color: var(--bg-topbar);
+header {
   position: fixed;
+  width: 100%;
   top: 0;
   left: 0;
   right: 0;
-  margin: 5px;
+  margin: 3px;
   border-radius: 20px;
+  height: 4rem;
+  background-color: var(--bg-topbar);
+
+}
+ 
+header .container {
+  padding: 0.8rem;
+  display: flex;
+  align-items: center;
 }
   
