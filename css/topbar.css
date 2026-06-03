@@ -4,7 +4,7 @@ header {
   top: 0;
   left: 0;
   right: 0;
-  margin: 3px;
+  margin: 8px;
   border-radius: 20px;
   height: 4rem;
   background-color: var(--bg-topbar);
