@@ -1,5 +1,10 @@
+:root {
+  --brand-color: blue;
+  --background-bg: black;
+}
+
 
 span.brand-color {
-  color: blue;  
+  color: var(--brand-color);  
 }
 
