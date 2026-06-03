@@ -1,6 +1,7 @@
 :root {
   --brand-color: blue;
-  --background-bg: black;
+  
+  --bg-topbar: black;
 }
 
 
