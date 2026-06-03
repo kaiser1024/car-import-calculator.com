@@ -9,7 +9,7 @@ window.addEventListener('scroll', () => {
     return;
   }
 
-if (Math.abs(currentScroll - lastScroll) < 5 return;
+if (Math.abs(currentScroll - lastScroll) < 5) return;
 
 if (currentScroll > lastScroll) {
     topbar.classList.add('slideout');
