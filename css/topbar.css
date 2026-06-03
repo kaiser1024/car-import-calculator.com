@@ -8,6 +8,8 @@ header {
   border-radius: 20px;
   height: 4rem;
   background-color: red;
+  transition: transform 0.3s ease;
+
 /*  background-color: var(--bg-topbar); */
 }
  
