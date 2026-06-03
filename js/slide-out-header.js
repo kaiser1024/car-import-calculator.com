@@ -1,4 +1,4 @@
-const topbar = document.querySelector('header');
+const topbar = document.querySelector('.topbar');
 let lastScroll = window.pageYOffset;
 
 window.addEventListener('scroll', () => {
