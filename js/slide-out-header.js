@@ -5,16 +5,16 @@ window.addEventListener('scroll', () => {
   const currentScroll = window.pageYOffset;
 
   if (currentScroll <= 0) {
-    topbar.classList.remove('hidden');
+    topbar.classList.remove('slideout');
     return;
   }
 
 if (Math.abs(currentScroll - lastScroll) < 5 return;
 
 if (currentScroll > lastScroll) {
-    topbar.classList.add('hidden');
+    topbar.classList.add('slideout');
 } else {
-  topbar.classList.remove('hidden');
+  topbar.classList.remove('slideout');
 }
 
   lastScroll = currentScroll;
