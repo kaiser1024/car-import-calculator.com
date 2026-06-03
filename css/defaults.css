@@ -8,4 +8,13 @@ a {
   text-decoration: none;
 }
 
+.background {
+  position: fixed;
+  width: 100%;
+  heigh: 100%;
+  top: 0;
+  left: 0;
+}
+
+
 
