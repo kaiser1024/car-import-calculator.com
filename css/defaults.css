@@ -16,5 +16,9 @@ a {
   left: 0;
 }
 
+.body {
+  top-margin: var(calc(--topbar-height) + 3rem);
+}
+
 
 
