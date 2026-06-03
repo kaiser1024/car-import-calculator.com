@@ -1,6 +1,6 @@
 header .container {
   background-color: var(--bg-topbar);
-  position: absolute;
+  position: fixed;
   width: 100%;
   margin: 5px;
   border-radius: 20px;
