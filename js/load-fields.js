@@ -16,8 +16,8 @@ fetch('./tool/input-template.json')
     // Loop through all fields
     Object.values(data).forEach(item => {
       if (item.active === true) {
-        const fields = document.createElement('fields');
-        div.className = item.id; // e.g. "question1"
+        const fields = document.createElement('div');
+        fields.className = item.id; // e.g. "question1"
 
         test.appendChild(fields);
       }
