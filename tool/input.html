@@ -31,12 +31,20 @@
     "integer-output": false,
     "const-output": false,
   },
-  "field3": {
-    "id": q3,
-    "input-label": "3rd Question",
-    "input-summary": "Your Choice for Question 3:"
-    "string-output": false,
+  "field2": {
+    "id": q2,
+    "default-show": true,
+    "ancestor: "q2"
+    "ancestor-select-value: "yes", "no",
+    "input-label": "2nd Question",
+    "input-summary": "Your Choice for Question 2:",
+    "select-list": true,
+    "select-range": false,
+    "select-range-min": 0,
+    "select-range-max": 1000,
+    "select-range-unit: "km",
+    "string-output": true,
     "integer-output": false,
-    "const-output": true,
+    "const-output": false,
   }
 }
