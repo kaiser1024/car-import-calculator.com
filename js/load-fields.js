@@ -13,13 +13,25 @@ fetch('./tool/input-template.json')
       return;
     }
 
-    // Loop through all fields
     Object.values(data).forEach(item => {
       if (item.active === true) {
-        const fields = document.createElement('div');
-        fields.className = item.id; // e.g. "question1"
+        
+        // Create wrapper div (question1, question2, etc.)
+        const fieldDiv = document.createElement('div');
+        fieldDiv.className = item.id;
 
-        test.appendChild(fields);
+        // ✅ Create label
+        const label = document.createElement('label');
+        label.textContent = item.label;
+
+        // (Optional but recommended)
+        label.setAttribute('for', item.id);
+
+        // ✅ Append label to the div
+        fieldDiv.appendChild(label);
+
+        // ✅ Append div to form container
+        test.appendChild(fieldDiv);
       }
     });
   })
