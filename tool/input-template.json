@@ -1,4 +1,7 @@
 {
+  "h1": {
+    "text": "Header Text"
+  },
   "field1": {
     "active": true,
     "id": "question1",
