@@ -20,5 +20,10 @@ body {
   margin-top: calc(var(--topbar-height) + 3rem);
 }
 
+main {
+  margin-left: 3rem;
+  margint-right: 3rem;
+}
+
 
 
