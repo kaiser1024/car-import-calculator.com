@@ -17,7 +17,7 @@ header .container {
   align-items: center;
 }
 
-header ul 
+header ul {
   display: flex;
   list-style: none;
   align-items: center;
