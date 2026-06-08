@@ -13,7 +13,9 @@
   "calc-m1-de-year": {
     "active": true,
     "label": "Year of Manufacture",
-    "show-on-pageload": true
+    "show-on-pageload": true,    
+    "select-load": "year-range",
+    "year-start": 1950
   },
   "calc-m1-de-firstreg": {
     "active": true,
