@@ -1,34 +1,59 @@
-// Step 1: find all elements that contain a class starting with "load-"
+// Find all elements with "load-"
 const elements = document.querySelectorAll('[class*="load-"]');
 
 elements.forEach(el => {
-  // Find the specific "load-*" class
-  const loadClass = Array.from(el.classList).find(c => c.startsWith('load-'));
 
+  const loadClass = Array.from(el.classList).find(c => c.startsWith('load-'));
   if (!loadClass) return;
 
-  // Extract the part after "load-"
   const formId = loadClass.replace('load-', '');
 
-  // Build JSON path
+  // ✅ Updated path (your requirement)
   const jsonPath = `./json/${formId}.json`;
 
-  console.log(`Loading form: ${formId} from ${jsonPath}`);
-
-  // Fetch the JSON
   fetch(jsonPath)
     .then(response => {
-      if (!response.ok) {
-        throw new Error(`Could not load ${jsonPath}`);
-      }
+      if (!response.ok) throw new Error(`Failed to load ${jsonPath}`);
       return response.json();
     })
     .then(data => {
-      console.log(`Loaded data for ${formId}:`, data);
 
-      // 👉 next step: render into `el`
+      Object.values(data).forEach(field => {
+
+        // ✅ Only active fields
+        if (!field.active) return;
+
+        // 🔹 1. Create wrapper
+        const fieldWrapper = document.createElement('div');
+        fieldWrapper.className = 'form-field';
+
+        // 🔹 2. Create label
+        const label = document.createElement('label');
+        label.textContent = field.label;
+        label.setAttribute('for', field.id);
+
+        fieldWrapper.appendChild(label);
+
+        // 🔹 3. Create input based on type
+        let input;
+
+        if (field.type === 'select') {
+          input = document.createElement('select');
+        }
+
+        // ✅ Assign ID if input exists
+        if (input) {
+          input.id = field.id;
+          input.name = field.id;
+
+          fieldWrapper.appendChild(input);
+        }
+
+        // 🔹 4. Append to container
+        el.appendChild(fieldWrapper);
+
+      });
+
     })
-    .catch(err => {
-      console.error(err);
-    });
+    .catch(err => console.error(err));
 });
