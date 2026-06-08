@@ -1,40 +1,29 @@
 fetch('./tool/input-template.json')
   .then(response => {
-    if (!response.ok) {
-      throw new Error('Failed to load JSON');
-    }
+    if (!response.ok) throw new Error('Failed to load JSON');
     return response.json();
   })
   .then(data => {
-    const r1c1 = document.querySelector('.form-r1c1');
+    const container = document.querySelector('.form-r1c1');
 
-    if (!r1c1) {
-      console.error('Container .r1c1 not found');
+    if (!container) {
+      console.error('Container .form-r1c1 not found');
       return;
     }
 
     Object.values(data).forEach(item => {
-      if (item.active === true) {
-        
-        // Create wrapper div (question1, question2, etc.)
+      if (item.active) {
+
         const fieldDiv = document.createElement('div');
         fieldDiv.className = item.id;
 
-        // ✅ Create label
         const label = document.createElement('label');
         label.textContent = item.label;
+        label.setAttribute('for', item.id);
 
-        // (Optional but recommended)
-        label.setAttribute('for', r1c1.id);
-
-        // ✅ Append label to the div
         fieldDiv.appendChild(label);
-
-        // ✅ Append div to form container
-        r1c1.appendChild(fieldDiv);
+        container.appendChild(fieldDiv);
       }
     });
   })
-  .catch(error => {
-    console.error('Error loading JSON:', error);
-  });
+  .catch(error => console.error('Error loading JSON:', error));
