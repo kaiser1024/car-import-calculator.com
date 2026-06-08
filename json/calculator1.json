@@ -5,42 +5,42 @@
     "id": "calculator1-q1",
     "label": "1st question",
     "label-position": "1",
-    "type": "select"
+    "input-type": "select"
       },
   "field2": {
     "active": true,
     "id": "calculator1-q2",
     "label": "2nd question",
     "label-position": "2",
-    "type": "select"
+    "input-type": "select"
       },
   "field3": {
     "active": true,
     "id": "calculator1-q3",
     "label": "3rd question",
     "label-position": "1",
-    "type": "select"
+    "input-type": "select"
       },
   "field4": {
     "active": true,
     "id": "calculator1-q4",
-    "label": "4rd question",
+    "label": "Email address",
     "label-position": "2",
-    "type": "select"
+    "input-type": "email"
   },
   "field5": {
     "active": true,
     "id": "calculator1-q5",
     "label": "Comments",
     "label-position": "2",
-    "type": "text"
+    "input-type": "textarea"
   },
   "field6": {
     "active": false,
     "id": "calculator1-q6",
     "label": "Name",
     "label-position": "1",
-    "type": "input"
+    "input-type": "text"
 
   }
 }
