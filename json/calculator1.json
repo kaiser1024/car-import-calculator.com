@@ -1,1 +1,40 @@
+{
 
+  "field1": {
+    "active": true,
+    "id": "calculator1-q1",
+    "label": "1st question",
+    "type": "select"
+      },
+  "field2": {
+    "active": true,
+    "id": "calculator1-q2",
+    "label": "2nd question",
+    "type": "select"
+      },
+  "field3": {
+    "active": true,
+    "id": "calculator1-q3",
+    "label": "3rd question",
+    "type": "select"
+      },
+  "field4": {
+    "active": true,
+    "id": "calculator1-q4",
+    "label": "4rd question",
+    "type": "select"
+  },
+  "field5": {
+    "active": true,
+    "id": "calculator1-q5",
+    "label": "5th question",
+    "type": "select"
+  },
+  "field6": {
+    "active": false,
+    "id": "calculator1-q6",
+    "label": "6th question",
+    "type": "select"
+
+  }
+}
