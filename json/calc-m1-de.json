@@ -17,10 +17,22 @@
     "select-load": "year-range",
     "year-start": 1950
   },
-  "calc-m1-de-firstreg": {
-    "active": true,
-    "label": "Date of First Registration",
-    "show-on-pageload": false
+ "calc-m1-de-firstreg": {
+  "active": true,
+  "label": "Date of First Registration",
+  "show-on-pageload": true,
+  "input-type": "multi-select",
+  "layout": "YYMM",
+  "inputs": [
+    {
+      "type": "year-range",
+      "year-start": 1950
+    },
+    {
+      "type": "month-range"
+    }
+  ]
+}
   },
   "calc-m1-de-ot": {
     "active": true,
