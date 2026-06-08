@@ -29,31 +29,26 @@ elements.forEach(el => {
         label.textContent = field.label;
         label.setAttribute('for', field.id);
 
-        // 🔹 Create element
+        // 🔹 Create element based on input-type
         let input = null;
 
-        switch (field.type) {
+        if (field["input-type"] === 'select') {
+          input = document.createElement('select');
 
-          case 'select':
-            input = document.createElement('select');
-            break;
+        } else if (field["input-type"] === 'textarea') {
+          input = document.createElement('textarea');
 
-          case 'textarea':
-            input = document.createElement('textarea');
-            break;
-
-          case 'input':
-            input = document.createElement('input');
-            input.type = field.inputType || 'text'; // ✅ default fallback
-            break;
+        } else {
+          // everything else is an input type
+          input = document.createElement('input');
+          input.type = field["input-type"]; // text, email, number, etc.
         }
 
-        // ✅ Assign attributes if element exists
+        // ✅ Assign attributes
         if (input) {
           input.id = field.id;
           input.name = field.id;
 
-          // optional future support
           if (field.placeholder) {
             input.placeholder = field.placeholder;
           }
