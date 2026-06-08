@@ -24,6 +24,65 @@ containers.forEach(container => {
         // ✅ Only create fields shown on page load
         if (!field.active || field["show-on-pageload"] !== true) return;
 
+        // ✅ MULTI-SELECT (YEAR + MONTH)
+if (field["input-type"] === "multi-select") {
+
+  const wrapper = document.createElement('div');
+  wrapper.id = fieldId;
+
+  const label = document.createElement('label');
+  label.textContent = field.label;
+
+  container.appendChild(wrapper);
+  wrapper.appendChild(label);
+
+  const inputs = field.inputs;
+  const layout = field.layout;
+
+  let elements = [];
+
+  inputs.forEach((input, index) => {
+
+    const select = document.createElement('select');
+    select.id = `${fieldId}-${index}`;
+
+    // 🔹 YEAR
+    if (input.type === "year-range") {
+      const currentYear = new Date().getFullYear();
+      const startYear = input["year-start"];
+
+      for (let y = currentYear; y >= startYear; y--) {
+        const opt = document.createElement('option');
+        opt.value = y;
+        opt.textContent = y;
+        select.appendChild(opt);
+      }
+    }
+
+    // 🔹 MONTH
+    else if (input.type === "month-range") {
+      for (let m = 1; m <= 12; m++) {
+        const opt = document.createElement('option');
+        const padded = String(m).padStart(2, '0');
+        opt.value = padded;
+        opt.textContent = padded;
+        select.appendChild(opt);
+      }
+    }
+
+    elements.push(select);
+  });
+
+  // ✅ Layout control
+  if (layout === "MMYY") {
+    elements.reverse();
+  }
+
+  elements.forEach(el => wrapper.appendChild(el));
+
+  return; // ✅ VERY IMPORTANT: skip normal select logic
+}
+
         // 🔹 Wrapper
         const wrapper = document.createElement('div');
         wrapper.id = fieldId;
