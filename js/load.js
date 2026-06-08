@@ -1,3 +1,11 @@
+
+// ✅ 1. Helpers FIRST
+function formatDisplayValue(value, prefix) {
+  if (!prefix || prefix === 'none') return value;
+  return `${value} ${prefix}`;
+}
+
+
 function createOptions(select, field) {
 
   const values = field["input-values"];
