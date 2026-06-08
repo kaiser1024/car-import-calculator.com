@@ -40,11 +40,13 @@ containers.forEach(container => {
         // 🔹 Append select → label
         wrapper.appendChild(select);
         wrapper.appendChild(label);
-
         container.appendChild(wrapper);
 
-        // ✅ 🔥 LOAD OPTIONS BASED ON select-load
-        if (field["select-load"] === "list") {
+        // ✅ SELECT LOADING LOGIC
+        const loadType = field["select-load"];
+
+        // 🔹 LIST LOADING
+        if (loadType === "list") {
 
           const selectPath = `./select/${fieldId}.json`;
 
@@ -57,18 +59,15 @@ containers.forEach(container => {
             })
             .then(options => {
 
-              // Optional placeholder
-              const placeholder = document.createElement('option');
-              placeholder.value = '';
-              placeholder.textContent = '-- Select --';
-              select.appendChild(placeholder);
+              if (!Array.isArray(options)) {
+                console.warn(`Invalid format in ${selectPath}`);
+                return;
+              }
 
-              // Populate options
               options.forEach(opt => {
                 const optionEl = document.createElement('option');
                 optionEl.value = opt.key;
                 optionEl.textContent = opt.value;
-
                 select.appendChild(optionEl);
               });
 
@@ -77,6 +76,34 @@ containers.forEach(container => {
               console.warn(`Select load failed for ${fieldId}:`, err.message);
             });
 
+        }
+
+        // 🔹 YEAR RANGE
+        else if (loadType === "year-range") {
+
+          const startYear = field["year-start"];
+
+          if (!startYear) {
+            console.warn(`Missing "year-start" for ${fieldId}`);
+            return;
+          }
+
+          const currentYear = new Date().getFullYear();
+
+          for (let year = currentYear; year >= startYear; year--) {
+            const optionEl = document.createElement('option');
+            optionEl.value = year;
+            optionEl.textContent = year;
+            select.appendChild(optionEl);
+          }
+        }
+
+        // 🔹 SAFETY WARNINGS
+        else if (!loadType) {
+          console.warn(`No select-load defined for ${fieldId}`);
+        }
+        else {
+          console.warn(`Unknown select-load "${loadType}" for ${fieldId}`);
         }
 
       });
