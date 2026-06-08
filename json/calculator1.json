@@ -5,21 +5,65 @@
     "id": "calculator1-q1",
     "label": "1st question",
     "label-position": "1",
-    "input-type": "select"
+    "input-type": "select",
+    "input-values": "yes" "no",
+    "value-type": "string"
+    "input-prefix": "none"
       },
+  
   "field2": {
     "active": true,
     "id": "calculator1-q2",
     "label": "2nd question",
     "label-position": "2",
-    "input-type": "select"
+    "input-type": "select",
+    "input-values": "1" "1000",
+    "value-type": "range"
+    "input-prefix": "kW"
+     },
+  
+  "field3": {
+    "active": true,
+    "id": "calculator1-q2",
+    "label": "2nd question",
+    "label-position": "2",
+    "input-type": "select",
+    "input-values": "1" "2",
+    "value-type": "string"
+    "input-prefix": "kW"
       },
+  
+  "field3": {
+    "active": true,
+    "id": "calculator1-q2",
+    "label": "2nd question",
+    "label-position": "2",
+    "input-type": "select",
+    "input-values": "1" "2" "3",
+    "value-type": "integer"
+    "input-prefix": "kW"
+      },
+
+  "field4": {
+    "active": true,
+    "id": "calculator1-q2",
+    "label": "2nd question",
+    "label-position": "2",
+    "input-type": "select",
+    "input-values": "1" "2" "3",
+    "value-type": "string"
+    "input-prefix": "kW"
+      },
+  
   "field3": {
     "active": true,
     "id": "calculator1-q3",
     "label": "3rd question",
     "label-position": "1",
     "input-type": "select"
+    "input-values": "script",
+    "input-prefix": "none"
+
       },
   "field4": {
     "active": true,
@@ -27,6 +71,10 @@
     "label": "Email address",
     "label-position": "2",
     "input-type": "email"
+    "input-values": "50",
+    "input-prefix": "none"
+
+
   },
   "field5": {
     "active": true,
@@ -34,13 +82,17 @@
     "label": "Comments",
     "label-position": "2",
     "input-type": "textarea"
+    "input-values": "5000",
+    "input-prefix": "none"
   },
   "field6": {
-    "active": false,
+    "active": true,
     "id": "calculator1-q6",
     "label": "Name",
     "label-position": "1",
-    "input-type": "text"
+    "input-type": "text",
+    "input-values": "60",
+    "input-prefix": "none"
 
   }
 }
