@@ -6,7 +6,7 @@ fetch('./tool/input-template.json')
     return response.json();
   })
   .then(data => {
-    const r1c1 = document.querySelector('.r1c1');
+    const r1c1 = document.querySelector('.form-r1c1');
 
     if (!r1c1) {
       console.error('Container .r1c1 not found');
