@@ -1,42 +1,52 @@
 {
   "calc-m1-de-make": {
     "active": true,
-    "label": "Make of Car"
+    "label": "Make of Car",
+    "show-on-pageload": true
   },
   "calc-m1-de-model": {
     "active": true,
-    "label": "Model of Car"
+    "label": "Model of Car",
+    "show-on-pageload": false
   },
   "calc-m1-de-year": {
     "active": true,
-    "label": "Year of Manufacture"
+    "label": "Year of Manufacture",
+    "show-on-pageload": false
   },
   "calc-m1-de-firstreg": {
     "active": true,
-    "label": "Date of First Registration"
+    "label": "Date of First Registration",
+    "show-on-pageload": false
   },
   "calc-m1-de-ot": {
     "active": true,
-    "label": "Do you want Oldtimer status?"
+    "label": "Do you want Oldtimer status?",
+    "show-on-pageload": false
   },
   "calc-m1-de-fuel": {
     "active": true,
-    "label": "Type of Fuel"
+    "label": "Type of Fuel",
+    "show-on-pageload": false
   },
   "calc-m1-de-kw": {
     "active": true,
-    "label": "Kilowatt"
+    "label": "Kilowatt",
+    "show-on-pageload": false
   },
   "calc-m1-de-cc": {
     "active": true,
-    "label": "Cylinder Size (cc)"
+    "label": "Cylinder Size (cc)",
+    "show-on-pageload": false
   },
   "calc-m1-de-mot": {
     "active": true,
-    "label": "Is MOT valid?"
+    "label": "Is MOT valid?",
+    "show-on-pageload": false
   },
   "calc-m1-de-4wd": {
     "active": true,
-    "label": "All Wheel Drive Vehicle?"
+    "label": "All Wheel Drive Vehicle?",
+    "show-on-pageload": false
   }
 }
