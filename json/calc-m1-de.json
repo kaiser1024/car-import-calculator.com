@@ -12,7 +12,7 @@
   "calc-m1-de-year": {
     "active": true,
     "label": "Year of Manufacture",
-    "show-on-pageload": false
+    "show-on-pageload": true
   },
   "calc-m1-de-firstreg": {
     "active": true,
