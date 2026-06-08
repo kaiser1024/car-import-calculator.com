@@ -7,8 +7,6 @@ elements.forEach(el => {
   if (!loadClass) return;
 
   const formId = loadClass.replace('load-', '');
-
-  // ✅ Updated path (your requirement)
   const jsonPath = `./json/${formId}.json`;
 
   fetch(jsonPath)
@@ -20,36 +18,57 @@ elements.forEach(el => {
 
       Object.values(data).forEach(field => {
 
-        // ✅ Only active fields
         if (!field.active) return;
 
-        // 🔹 1. Create wrapper
+        // 🔹 Wrapper
         const fieldWrapper = document.createElement('div');
         fieldWrapper.className = 'form-field';
 
-        // 🔹 2. Create label
+        // 🔹 Label
         const label = document.createElement('label');
         label.textContent = field.label;
         label.setAttribute('for', field.id);
 
-        fieldWrapper.appendChild(label);
+        // 🔹 Create element
+        let input = null;
 
-        // 🔹 3. Create input based on type
-        let input;
+        switch (field.type) {
 
-        if (field.type === 'select') {
-          input = document.createElement('select');
+          case 'select':
+            input = document.createElement('select');
+            break;
+
+          case 'textarea':
+            input = document.createElement('textarea');
+            break;
+
+          case 'input':
+            input = document.createElement('input');
+            input.type = field.inputType || 'text'; // ✅ default fallback
+            break;
         }
 
-        // ✅ Assign ID if input exists
+        // ✅ Assign attributes if element exists
         if (input) {
           input.id = field.id;
           input.name = field.id;
 
-          fieldWrapper.appendChild(input);
+          // optional future support
+          if (field.placeholder) {
+            input.placeholder = field.placeholder;
+          }
         }
 
-        // 🔹 4. Append to container
+        // 🔹 Label positioning
+        if (field["label-position"] === "2") {
+          if (input) fieldWrapper.appendChild(input);
+          fieldWrapper.appendChild(label);
+        } else {
+          fieldWrapper.appendChild(label);
+          if (input) fieldWrapper.appendChild(input);
+        }
+
+        // 🔹 Append to container
         el.appendChild(fieldWrapper);
 
       });
