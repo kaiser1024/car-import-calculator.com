@@ -2,7 +2,8 @@
   "calc-m1-de-make": {
     "active": true,
     "label": "Make of Car",
-    "show-on-pageload": true
+    "show-on-pageload": true,
+    "select-load": "list"
   },
   "calc-m1-de-model": {
     "active": true,
