@@ -98,6 +98,38 @@ containers.forEach(container => {
           }
         }
 
+          // 🔹 GENERIC RANGE WITH UNIT
+else if (loadType === "range") {
+
+  const start = field["range-start"];
+  const end = field["range-end"];
+  const step = field["range-step"] || 1;
+  const unit = field["range-unit"] || "";
+
+  if (start === undefined || end === undefined) {
+    console.warn(`Missing range-start or range-end for ${fieldId}`);
+    return;
+  }
+
+  // Safety: avoid infinite loops
+  if (step <= 0) {
+    console.warn(`Invalid range-step for ${fieldId}`);
+    return;
+  }
+
+  for (let value = start; value <= end; value += step) {
+    const optionEl = document.createElement('option');
+    optionEl.value = value;
+
+    // ✅ display with unit
+    optionEl.textContent = unit
+      ? `${value} ${unit}`
+      : value;
+
+    select.appendChild(optionEl);
+  }
+}
+
         // 🔹 SAFETY WARNINGS
         else if (!loadType) {
           console.warn(`No select-load defined for ${fieldId}`);
