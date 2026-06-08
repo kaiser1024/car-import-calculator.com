@@ -31,16 +31,16 @@
   "field5": {
     "active": true,
     "id": "calculator1-q5",
-    "label": "5th question",
+    "label": "Comments",
     "label-position": "2",
-    "type": "select"
+    "type": "text"
   },
   "field6": {
     "active": false,
     "id": "calculator1-q6",
-    "label": "6th question",
+    "label": "Name",
     "label-position": "1",
-    "type": "select"
+    "type": "input"
 
   }
 }
