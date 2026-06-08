@@ -35,7 +35,7 @@
   "calc-m1-de-kw": {
     "active": true,
     "label": "Kilowatt",
-    "show-on-pageload": false,
+    "show-on-pageload": true,
     "select-load": "range",
     "range-start": 1,
     "range-step": 1,
