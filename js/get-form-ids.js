@@ -16,12 +16,12 @@ function getFormIds(formContainers) {
 
     console.log(formIds);
 
-    const populateJsonFilenames = document.createElement("script");
-    populateJsonFilenames.src = "./js/populate-json-filenames.js";
+    const populateJsonFilenamesScript = document.createElement("script");
+    populateJsonFilenamesScript.src = "./js/populate-json-filenames.js";
 
-    populateJsonFilenames.onload = function () {
-        populateJsonFilenamesFunction(formIds);
+    populateJsonFilenamesScript.onload = function () {
+        populateJsonFilenames(formIds);
     };
 
-    document.body.appendChild(populateJsonFilenames);
+    document.body.appendChild(populateJsonFilenamesScript);
 }
