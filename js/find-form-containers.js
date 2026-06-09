@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     getFormIds.src = "./js/get-form-ids.js";
 
     getFormIds.onload = function () {
-        getFormIDs(formContainers);
+        getFormIds(formContainers);
     };
 
     document.body.appendChild(getFormIds);
