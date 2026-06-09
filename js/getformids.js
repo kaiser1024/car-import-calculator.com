@@ -16,8 +16,8 @@ function getFormIDs(formcontainers) {
 
     console.log(formIDs);
 
-    const nextstep = document.createElement("script");
-    nextstep.src = "./js/nextstep.js";
+    const populateJsonFilenames = document.createElement("script");
+    populateJsonFilenames.src = "./js/populate-json-filenames.js";
 
-    document.body.appendChild(nextstep);
+    document.body.appendChild(populateJsonFilenames);
 }
