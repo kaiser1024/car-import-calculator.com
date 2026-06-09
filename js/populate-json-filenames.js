@@ -1,10 +1,10 @@
-function populateJsonFilenames(formIDs) {
+function populateJsonFilenames(formIds) {
 
-    formIDs.forEach(formID => {
+    formIds.forEach(formId => {
 
-        const jsonfileName = `./json/${formID}.json`;
+        const jsonFilename = `./json/${formId}.json`;
 
-        console.log(fileName);
+        console.log(jsonFilename);
 
     });
 
