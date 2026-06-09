@@ -17,7 +17,7 @@ function loadStaticFormFields(jsonFilenames) {
                     if (value.active === true) {
 
                         container.appendChild(
-                            Object.assign(document.createElement("div"), { id: key })
+                            Object.assign(document.createElement("div"), { id: key, className: "form-field-wrapper" })
                         );
 
                     }
