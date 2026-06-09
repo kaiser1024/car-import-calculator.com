@@ -6,7 +6,6 @@ function populateJsonFilenames(formIDs) {
 
         console.log(fileName);
 
-
     });
 
     const nextstep = document.createElement("script");
