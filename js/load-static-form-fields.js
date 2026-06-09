@@ -1,5 +1,5 @@
 
-function loadStaticFormFieldsFunction(jsonFilenames) {
+function loadStaticFormFields(jsonFilenames) {
 
     jsonFilenames.forEach(jsonFilename => {
 
@@ -25,13 +25,13 @@ function loadStaticFormFieldsFunction(jsonFilenames) {
 
     });
 
-    const loadFormEvents = document.createElement("script");
-    loadFormEvents.src = "./js/load-form-events.js";
+    const loadFormEventsScript = document.createElement("script");
+    loadFormEventsScript.src = "./js/load-form-events.js";
 
-    loadFormEvents.onload = function () {
-        loadFormEventsFunction(jsonFilenames);
+    loadFormEventsScript.onload = function () {
+        loadFormEvents(jsonFilenames);
     };
 
-    document.body.appendChild(loadFormEvents);
+    document.body.appendChild(loadFormEventsScript);
 }
 ``
