@@ -1,27 +1,23 @@
-function getFormIDs(elements) {
+function getFormIDs(formcontainers) {
 
-    const ids = [];
+    const formIDs = [];
 
-    elements.forEach(el => {
-        const classList = Array.from(el.classList);
-
-        const loadClass = classList.find(c => c.startsWith("loadform-"));
-
-        if (loadClass) {
-            const id = loadClass.replace("loadform-", "");
-            ids.push(id);
-        }
+    formcontainers.forEach(el => {
+        el.classList.forEach(className => {
+            if (className.startsWith("loadform-")) {
+                formIDs.push(className);
+            }
+        });
     });
 
-    console.log(ids);
+    formIDs.forEach((className, index) => {
+        formIDs[index] = className.replace("loadform-", "");
+    });
+
+    console.log(formIDs);
 
     const nextstep = document.createElement("script");
     nextstep.src = "./js/nextstep.js";
 
-    nextstep.onload = function () {
-        // next step will run here
-    };
-
     document.body.appendChild(nextstep);
-
 }
