@@ -1,20 +1,26 @@
 {
   "calc-m1-de-make": {
-    "active": true
+    "active": true,
+    "parent": "none"
   },
   "calc-m1-de-model": {
-    "active": true
+    "active": true,
+    "parent": "calc-m1-de-make"
   },
   "calc-m1-de-year": {
-    "active": true
+    "active": true,
+    "parent": "none"
   },
   "calc-m1-de-firstreg": {
-    "active": true
+    "active": true,
+    "parent": "calc-m1-de-year"
   },
   "calc-m1-de-ot": {
-    "active": false
+    "active": false,
+    "parent": "calc-m1-de-year"
   },
   "calc-m1-de-fuel": {
-    "active": true
+    "active": true,
+    "parent": "none"
   }
 }
