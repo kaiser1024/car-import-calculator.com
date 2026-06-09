@@ -4,13 +4,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     console.log(formContainers);
 
-    const getFormIds = document.createElement("script");
-    getFormIds.src = "./js/get-form-ids.js";
+    
+    const getFormIdsScript = document.createElement("script");
+    getFormIdsScript.src = "./js/get-form-ids.js";
 
-    getFormIds.onload = function () {
-        getFormIds(formContainers);
+    getFormIdsScript.onload = function () {
+    getFormIds(formContainers);
     };
 
-    document.body.appendChild(getFormIds);
+document.body.appendChild(getFormIdsScript);
 
-});
