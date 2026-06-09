@@ -1,15 +1,22 @@
 function populateJsonFilenames(formIds) {
 
+    const jsonFilenames = [];
+
     formIds.forEach(formId => {
 
         const jsonFilename = `./json/${formId}.json`;
-
-        console.log(jsonFilename);
+        jsonFilenames.push(jsonFilename);
 
     });
 
-    const nextstep = document.createElement("script");
-    nextstep.src = "./js/nextstep.js";
+    console.log(jsonFilenames);
 
-    document.body.appendChild(nextstep);
+    const loadStaticFormFields = document.createElement("script");
+    loadStaticFormFields.src = "./js/load-static-form-fields.js";
+
+    loadStaticFormFields.onload = function () {
+        loadStaticFormFieldsFunction(jsonFilenames);
+    };
+
+    document.body.appendChild(loadStaticFormFields);
 }
