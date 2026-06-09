@@ -34,4 +34,3 @@ function loadStaticFormFields(jsonFilenames) {
 
     document.body.appendChild(loadFormEventsScript);
 }
-``
