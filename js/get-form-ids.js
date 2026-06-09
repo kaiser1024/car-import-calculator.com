@@ -1,20 +1,20 @@
-function getFormIDs(formcontainers) {
+function getFormIds(formContainers) {
 
-    const formIDs = [];
+    const formIds = [];
 
-    formcontainers.forEach(el => {
+    formContainers.forEach(el => {
         el.classList.forEach(className => {
             if (className.startsWith("loadform-")) {
-                formIDs.push(className);
+                formIds.push(className);
             }
         });
     });
 
-    formIDs.forEach((className, index) => {
-        formIDs[index] = className.replace("loadform-", "");
+    formIds.forEach((className, index) => {
+        formIds[index] = className.replace("loadform-", "");
     });
 
-    console.log(formIDs);
+    console.log(formIds);
 
     const populateJsonFilenames = document.createElement("script");
     populateJsonFilenames.src = "./js/populate-json-filenames.js";
