@@ -1,7 +1,12 @@
-
 function loadStaticFormFields(jsonFilenames) {
 
     jsonFilenames.forEach(jsonFilename => {
+
+        const formId = jsonFilename
+            .replace("./json/", "")
+            .replace(".json", "");
+
+        const container = document.querySelector(`.loadform-${formId}`);
 
         fetch(jsonFilename)
             .then(response => response.json())
@@ -11,9 +16,10 @@ function loadStaticFormFields(jsonFilenames) {
 
                     if (value.active === true) {
 
-                        document.body.appendChild(
-                      Object.assign(document.createElement("div"), { id: key })
-                );
+                        container.appendChild(
+                            Object.assign(document.createElement("div"), { id: key })
+                        );
+
                     }
 
                 });
