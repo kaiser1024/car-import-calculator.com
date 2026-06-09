@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log(formContainers);
 
     const getFormIds = document.createElement("script");
-    getFormIds.src = "./js/getformids.js";
+    getFormIds.src = "./js/get-form-ids.js";
 
     getFormIds.onload = function () {
         getFormIDs(formContainers);
