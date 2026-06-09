@@ -19,5 +19,9 @@ function getFormIds(formContainers) {
     const populateJsonFilenames = document.createElement("script");
     populateJsonFilenames.src = "./js/populate-json-filenames.js";
 
+    populateJsonFilenames.onload = function () {
+        populateJsonFilenamesFunction(formIds);
+    };
+
     document.body.appendChild(populateJsonFilenames);
 }
