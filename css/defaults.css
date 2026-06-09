@@ -25,5 +25,10 @@ main {
   margint-right: 3rem;
 }
 
+.form-field-wrapper {
+    height: 0;
+    opacity: 0;
+}
+
 
 
