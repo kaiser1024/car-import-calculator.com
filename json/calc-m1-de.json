@@ -1,41 +1,21 @@
 {
   "calc-m1-de-make": {
-    "active": true,
-    "position": "1",
-    "label": "Make of Car",
-    "select-load": "list"
+    "active": true
   },
   "calc-m1-de-model": {
-    "active": true,
-    "position": "1-a",
-    "label": "Model of Car",
-    "select-load": "list"
+    "active": true
+   
   },
   "calc-m1-de-year": {
-    "active": true,
-    "position": "2",
-    "label": "Year of Manufacture",
-    "select-load": "yyyyrange-todate",
-    "yyyyrange-from": "1950"
+    "active": true
   },
   "calc-m1-de-firstreg": {
-    "active": true,
-    "position": "2a",
-    "label": "Date of First Registration",
-    "select-load": "mmrange-todate",
-    "mmrange-from": "011950"
+    "active": true
   },
   "calc-m1-de-ot": {
-    "active": true,
-    "position": "2b",
-    "label": "Oldtimer Registration",
-    "select-load": "boolean",
-    "boolean-labels-truefalse": ["yes", "no"]
+    "active": false
   },
   "calc-m1-de-fuel": {
-    "active": true,
-    "position": "3",
-    "label": "Fuel type",
-    "select-load": "list"
+    "active": true
   }
 }
