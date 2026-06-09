@@ -9,12 +9,12 @@ function populateJsonFilenames(formIds) {
 
     console.log(jsonFilenames);
 
-    const loadStaticFormFields = document.createElement("script");
-    loadStaticFormFields.src = "./js/load-static-form-fields.js";
+    const loadStaticFormFieldsScript = document.createElement("script");
+    loadStaticFormFieldsScript.src = "./js/load-static-form-fields.js";
 
-    loadStaticFormFields.onload = function () {
-        loadStaticFormFieldsFunction(jsonFilenames);
+    loadStaticFormFieldsScript.onload = function () {
+        loadStaticFormFields(jsonFilenames);
     };
 
-    document.body.appendChild(loadStaticFormFields);
+    document.body.appendChild(loadStaticFormFieldsScript);
 }
