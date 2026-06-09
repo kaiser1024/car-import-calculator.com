@@ -19,7 +19,7 @@
     "select-load": "yyyyrange-todate",
     "yyyyrange-from": "1950"
   },
-    "calc-m1-de-year": {
+    "calc-m1-de-firstreg": {
     "active": true,
     "position": "2a",
     "label": "Date of First Registration",
