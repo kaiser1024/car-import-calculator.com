@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const currentYear = new Date().getFullYear();
-    const currentMonth = new Date().getMonth() + 1; // 1–12
+    const currentMonth = new Date().getMonth() + 1;
 
     Object.entries(formData).forEach(([formID, formFields]) => {
 
