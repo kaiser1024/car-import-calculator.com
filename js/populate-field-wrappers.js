@@ -27,7 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 ? "formfield-wrapper-on"
                 : "formfield-wrapper";
 
-            // ✅ LABEL (only for ON fields)
             if (isRoot && itemValue.label) {
                 const label = document.createElement("label");
                 label.setAttribute("for", itemKey);
@@ -35,7 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 formfieldWrapper.appendChild(label);
             }
 
-            // ✅ SELECTS (only for ON fields)
             if (isRoot && itemValue.select) {
                 const selectCount = Number(itemValue.select);
 
@@ -44,10 +42,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     select.name = `${itemKey}-select-${i + 1}`;
                     select.dataset.index = i + 1;
 
-                    // placeholder option
                     const option = document.createElement("option");
                     option.value = "";
                     option.textContent = "Select...";
+                    option.disabled = true;
+                    option.selected = true;
+
                     select.appendChild(option);
 
                     formfieldWrapper.appendChild(select);
