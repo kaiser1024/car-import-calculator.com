@@ -1,42 +1,29 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. Find all elements with class starting with "loadform-"
-    const loadFormDivs = document.querySelectorAll('[class*="loadform-"]');
 
-    loadFormDivs.forEach(div => {
-        // 2. Get the specific class that starts with loadform-
-        const loadClass = [...div.classList].find(c => c.startsWith("loadform-"));
-        if (!loadClass) return;
+    if (typeof formData === "undefined") {
+        console.warn("formData is not defined");
+        return;
+    }
 
-        // 3. Extract key (remove prefix)
-        const key = loadClass.replace("loadform-", "");
-
-        // 4. Find corresponding data
-        const section = formData[key];
-        if (!section) {
-            console.warn(`No formData found for key: ${key}`);
+    Object.entries(formData).forEach(([formID, formFields]) => {
+        const formContainer = document.getElementById(FormID);
+        if (!formContainer) {
+            console.warn(`Missing container: #${formID}`);
             return;
         }
 
-        // 5. Loop through items
-        Object.entries(section).forEach(([itemKey, itemData]) => {
-            if (!itemData.active) return; // only active items
+        Object.entries(formFields).forEach(([itemKey, itemValue]) => {
 
-            // 6. Create wrapper
-            const wrapper = document.createElement("div");
-            wrapper.className = "form-item-wrapper";
-            wrapper.dataset.key = itemKey;
-            wrapper.dataset.parent = itemData.parent;
+            if (!itemValue.active) return;
 
-            // OPTIONAL: add placeholder content (replace later with real fields)
-            wrapper.innerHTML = `
-                <div class="form-item">
-                    <label>${itemKey}</label>
-                    <input type="text" name="${itemKey}">
-                </div>
-            `;
+            const formfieldWrapper = document.createElement("div");
+            formfieldWrapper.className = "formfield-wrapper";
+            formfieldWrapper.id = itemKey;
+            formfieldWrapper.dataset.parent = itemValue.parent;
 
-            // 7. Append to container
-            div.appendChild(wrapper);
+            formContainer.appendChild(formfieldWrapper);
         });
+
     });
+
 });
