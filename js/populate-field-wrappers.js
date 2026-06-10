@@ -18,13 +18,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
         Object.entries(formFields).forEach(([itemKey, itemValue]) => {
 
-            const wrapper = document.createElement("div");
-            wrapper.id = itemKey;
-            wrapper.dataset.parent = itemValue.parent;
+            const formfieldWrapper = document.createElement("div");
+            formfieldWrapper.id = itemKey;
+            formfieldWrapper.dataset.parent = itemValue.parent;
 
-            Value.active && itemValue.parent === "none";
+            itemValue.active && itemValue.parent === "none";
 
-            wrapper.className = isVisible
+            formfieldWrapper.className = isVisible
                 ? "formfield-wrapper-on"
                 : "formfield-wrapper";
             
