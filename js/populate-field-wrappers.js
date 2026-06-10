@@ -17,9 +17,14 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!itemValue.active) return;
 
             const formfieldWrapper = document.createElement("div");
-            formfieldWrapper.className = "formfield-wrapper";
             formfieldWrapper.id = itemKey;
             formfieldWrapper.dataset.parent = itemValue.parent;
+
+            
+            formfieldWrapper.className =
+                itemValue.parent === "none"
+                    ? "formfield-wrapper-on"
+                    : "formfield-wrapper";
 
             formContainer.appendChild(formfieldWrapper);
         });
