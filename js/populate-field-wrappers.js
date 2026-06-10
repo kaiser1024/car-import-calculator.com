@@ -19,12 +19,17 @@ document.addEventListener("DOMContentLoaded", () => {
             const formfieldWrapper = document.createElement("div");
             formfieldWrapper.id = itemKey;
             formfieldWrapper.dataset.parent = itemValue.parent;
-
             
-            formfieldWrapper.className =
-                itemValue.parent === "none"
-                    ? "formfield-wrapper-on"
-                    : "formfield-wrapper";
+        const noparent = itemValue.parent === "none";
+
+            formfieldWrapper.className = noparent
+                ? "formfield-wrapper-on"
+                : "formfield-wrapper";
+
+            if (noparent && itemValue.label) {
+                const formfieldLabel = document.createElement("label");
+                formfieldLabel.setAttribute("for", itemKey);
+                formfieldLabel.textContent = itemValue.label;
 
             formContainer.appendChild(formfieldWrapper);
         });
