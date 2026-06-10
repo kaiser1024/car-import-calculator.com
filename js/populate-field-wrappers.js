@@ -5,9 +5,10 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
+    const currentYear = new Date().getFullYear();
+
     Object.entries(formData).forEach(([formID, formFields]) => {
 
-        // containers are classes: .calc-m1-de, .calc-m1-at, .calc-m1-be
         const formContainer = document.querySelector(`.${formID}`);
         if (!formContainer) {
             console.warn(`Missing container: .${formID}`);
@@ -52,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     placeholder.selected = true;
                     select.appendChild(placeholder);
 
-                    // populate from list
+                    /* ----- LIST TYPE ----- */
                     if (itemValue.selecttype === "list") {
                         const list = selectlist[itemKey];
                         if (list) {
@@ -62,6 +63,21 @@ document.addEventListener("DOMContentLoaded", () => {
                                 option.textContent = label;
                                 select.appendChild(option);
                             });
+                        }
+                    }
+
+                    /* ----- YTD TYPE ----- */
+                    if (
+                        itemValue.selecttype === "ytd" &&
+                        itemValue.ytdstart
+                    ) {
+                        const startYear = Number(itemValue.ytdstart);
+
+                        for (let year = currentYear; year >= startYear; year--) {
+                            const option = document.createElement("option");
+                            option.value = year;
+                            option.textContent = year;
+                            select.appendChild(option);
                         }
                     }
 
