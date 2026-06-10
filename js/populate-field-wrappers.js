@@ -21,17 +21,37 @@ document.addEventListener("DOMContentLoaded", () => {
             formfieldWrapper.id = itemKey;
             formfieldWrapper.dataset.parent = itemValue.parent;
 
-            const noparent = itemValue.parent === "none";
+            const isRoot = itemValue.parent === "none";
 
-            formfieldWrapper.className = noparent
+            formfieldWrapper.className = isRoot
                 ? "formfield-wrapper-on"
                 : "formfield-wrapper";
 
-            if (noparent && itemValue.label) {
-                const formfieldLabel = document.createElement("label");
-                formfieldLabel.setAttribute("for", itemKey);
-                formfieldLabel.textContent = itemValue.label;
-                formfieldWrapper.appendChild(formfieldLabel);
+            // ✅ LABEL (only for ON fields)
+            if (isRoot && itemValue.label) {
+                const label = document.createElement("label");
+                label.setAttribute("for", itemKey);
+                label.textContent = itemValue.label;
+                formfieldWrapper.appendChild(label);
+            }
+
+            // ✅ SELECTS (only for ON fields)
+            if (isRoot && itemValue.select) {
+                const selectCount = Number(itemValue.select);
+
+                for (let i = 0; i < selectCount; i++) {
+                    const select = document.createElement("select");
+                    select.name = `${itemKey}-select-${i + 1}`;
+                    select.dataset.index = i + 1;
+
+                    // placeholder option
+                    const option = document.createElement("option");
+                    option.value = "";
+                    option.textContent = "Select...";
+                    select.appendChild(option);
+
+                    formfieldWrapper.appendChild(select);
+                }
             }
 
             formContainer.appendChild(formfieldWrapper);
