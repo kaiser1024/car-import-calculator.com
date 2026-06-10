@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    if (typeof formData === "undefined" || typeof selectlist === "undefined") {
+    if (typeof formData === "undefined") {
         console.warn("formData or selectlist is not defined");
         return;
     }
