@@ -75,11 +75,7 @@ if (
         yearSelect.appendChild(opt);
         
     }
-
-    // ✅ initialize months immediately using current year
-    yearSelect.selectedIndex = 1; // first real year (current year)
-        populateMonths(yearSelect.value);
-
+ 
     
 
     const populateMonths = (year) => {
@@ -97,6 +93,10 @@ if (
             monthSelect.appendChild(opt);
         }
     };
+
+    // ✅ initialize months immediately
+yearSelect.selectedIndex = 1;
+populateMonths(yearSelect.value);
 
     yearSelect.addEventListener("change", () => {
         populateMonths(yearSelect.value);
