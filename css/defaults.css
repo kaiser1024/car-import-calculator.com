@@ -25,7 +25,7 @@ main {
   margint-right: 3rem;
 }
 
-.form-field-wrapper {
+.formfield-wrapper {
     height: 0;
     opacity: 0;
 }
