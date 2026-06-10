@@ -6,9 +6,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     Object.entries(formData).forEach(([formID, formFields]) => {
-        const formContainer = document.getElementById(FormID);
+
+        const formContainer = document.querySelector(`.${formID}`);
         if (!formContainer) {
-            console.warn(`Missing container: #${formID}`);
+            console.warn(`Missing container: .${formID}`);
             return;
         }
 
@@ -19,8 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const formfieldWrapper = document.createElement("div");
             formfieldWrapper.id = itemKey;
             formfieldWrapper.dataset.parent = itemValue.parent;
-            
-        const noparent = itemValue.parent === "none";
+
+            const noparent = itemValue.parent === "none";
 
             formfieldWrapper.className = noparent
                 ? "formfield-wrapper-on"
@@ -30,10 +31,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 const formfieldLabel = document.createElement("label");
                 formfieldLabel.setAttribute("for", itemKey);
                 formfieldLabel.textContent = itemValue.label;
+                formfieldWrapper.appendChild(formfieldLabel);
+            }
 
             formContainer.appendChild(formfieldWrapper);
         });
-
     });
-
 });
