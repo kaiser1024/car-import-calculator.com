@@ -18,17 +18,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
         Object.entries(formFields).forEach(([itemKey, itemValue]) => {
 
-            if (!itemValue.active) return;
-
             const wrapper = document.createElement("div");
             wrapper.id = itemKey;
             wrapper.dataset.parent = itemValue.parent;
 
-            const isRoot = itemValue.parent === "none";
+            Value.active && itemValue.parent === "none";
 
-            wrapper.className = isRoot
+            wrapper.className = isVisible
                 ? "formfield-wrapper-on"
                 : "formfield-wrapper";
+            
 
             /* ---------- LABEL ---------- */
             if (isRoot && itemValue.label) {
