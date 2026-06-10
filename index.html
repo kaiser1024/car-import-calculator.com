@@ -94,34 +94,50 @@
     </footer>
 
     <script>
-    const formData = {
+const formData = {
     "calc-m1-de": {
-        "calc-m1-de-make": { active: true, parent: "none", label: "Make of Car", select: "1" },
-        "calc-m1-de-model": { active: true, parent: "calc-m1-de-make", label: "Model of Car", select: "1" },
-        "calc-m1-de-year": { active: true, parent: "none",  label: "Year of Manufacture", select: "1" },
-        "calc-m1-de-firstreg": { active: true, parent: "none", label: "Date of First Registration", select: "2" },
-        "calc-m1-de-ot": { active: false, parent: "calc-m1-de-year", label: "Oldtimer Registration", select: "1" },
-        "calc-m1-de-fuel": { active: true, parent: "none", label: "Fuel Type", select: "1" }
+        "calcm1demake": { active: true, parent: "none", label: "Make of Car", select: "1", selecttype: "list" },
+        "calcm1demodel": { active: true, parent: "calc-m1-de-make", label: "Model of Car", select: "1", selecttype: "list" },
+        "calcm1deyear": { active: true, parent: "none", label: "Year of Manufacture", select: "1", selecttype: "list" },
+        "calcm1defirstreg": { active: true, parent: "none", label: "Date of First Registration", select: "2", selecttype: "list" },
+        "calcm1deot": { active: false, parent: "calc-m1-de-year", label: "Oldtimer Registration", select: "1", selecttype: "list" },
+        "calcm1defuel": { active: true, parent: "none", label: "Fuel Type", select: "1", selecttype: "list" }
     },
 
     "calc-m1-at": {
-        "calc-m1-at-make": { active: true, parent: "none",  label: "Make of Car", select: "1" },
-        "calc-m1-at-model": { active: true, parent: "calc-m1-at-make", label: "Model of Car", select: "1" },
-        "calc-m1-at-year": { active: true, parent: "none",  label: "Year of Manufacture", select: "1" },
-        "calc-m1-at-firstreg": { active: true, parent: "calc-m1-at-year", label: "Date of First Registration", select: "2" },
-        "calc-m1-at-ot": { active: false, parent: "calc-m1-at-year", label: "Oldtimer Registration", select: "1" },
-        "calc-m1-at-fuel": { active: true, parent: "none", label: "Fuel Type" }
+        "calcm1atmake": { active: true, parent: "none", label: "Make of Car", select: "1", selecttype: "list" },
+        "calcm1atmodel": { active: true, parent: "calc-m1-at-make", label: "Model of Car", select: "1", selecttype: "list" },
+        "calcm1atyear": { active: true, parent: "none", label: "Year of Manufacture", select: "1", selecttype: "list" },
+        "calcm1atfirstreg": { active: true, parent: "calc-m1-at-year", label: "Date of First Registration", select: "2", selecttype: "list" },
+        "calcm1atot": { active: false, parent: "calc-m1-at-year", label: "Oldtimer Registration", select: "1", selecttype: "list" },
+        "calcm1atfuel": { active: true, parent: "none", label: "Fuel Type", select: "1", selecttype: "list" }
     },
 
     "calc-m1-be": {
-        "calc-m1-be-make": { active: true, parent: "none",  label: "Make of Car",  label: "Make of Car", select: "1" },
-        "calc-m1-be-model": { active: true, parent: "calc-m1-be-make", label: "Model of Car", select: "1" },
-        "calc-m1-be-year": { active: true, parent: "none",  label: "Year of Manufacture", select: "1" },
-        "calc-m1-be-firstreg": { active: true, parent: "calc-m1-be-year", label: "Date of First Registration", select: "2" },
-        "calc-m1-be-ot": { active: false, parent: "calc-m1-be-year", label: "Oldtimer Registration", select: "1" },
-        "calc-m1-be-fuel": { active: true, parent: "none", label: "Fuel Type", select: "1" }
+        "calcm1bemake": { active: true, parent: "none", label: "Make of Car", select: "1", selecttype: "list" },
+        "calcm1bemodel": { active: true, parent: "calc-m1-be-make", label: "Model of Car", select: "1", selecttype: "list" },
+        "calcm1beyear": { active: true, parent: "none", label: "Year of Manufacture", select: "1", selecttype: "list" },
+        "calcm1befirstreg": { active: true, parent: "calc-m1-be-year", label: "Date of First Registration", select: "2", selecttype: "list" },
+        "calcm1beot": { active: false, parent: "calc-m1-be-year", label: "Oldtimer Registration", select: "1" },
+        "calcm1befuel": { active: true, parent: "none", label: "Fuel Type", select: "1", selecttype: "list" }
     }
 };
+
+const selectlist = {
+    calcm1demake: { audi: "Audi", bmw: "BMW", mercedes: "Mercedes" },
+    calcm1deyear: { 2024: "2024", 2025: "2025", 2026: "2026" },
+    calcm1defuel: { petrol: "Petrol", diesel: "Diesel", hybrid: "Hybrid", electric: "Electric" },
+
+    calcm1atmake: { audi: "Audi", bmw: "BMW", mercedes: "Mercedes" },
+    calcm1atyear: { 2024: "2024", 2025: "2025", 2026: "2026" },
+    calcm1atfuel: { petrol: "Petrol", diesel: "Diesel", hybrid: "Hybrid", electric: "Electric" },
+
+    calcm1bemake: { audi: "Audi", bmw: "BMW", mercedes: "Mercedes" },
+    calcm1beyear: { 2024: "2024", 2025: "2025", 2026: "2026" },
+    calcm1befuel: { petrol: "Petrol", diesel: "Diesel", hybrid: "Hybrid", electric: "Electric" }
+};
+      
+        
 </script>
 
 
