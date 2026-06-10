@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const currentYear = new Date().getFullYear();
+    const currentMonth = new Date().getMonth() + 1; // 1–12
 
     Object.entries(formData).forEach(([formID, formFields]) => {
 
@@ -37,55 +38,117 @@ document.addEventListener("DOMContentLoaded", () => {
                 wrapper.appendChild(label);
             }
 
-            /* ---------- SELECT(S) ---------- */
-            if (isRoot && itemValue.select) {
-                const selectCount = Number(itemValue.select);
+         /* ---------- SELECT(S) ---------- */
+if (!isRoot || !itemValue.select) {
+    formContainer.appendChild(wrapper);
+    return;
+}
 
-                for (let i = 0; i < selectCount; i++) {
-                    const select = document.createElement("select");
-                    select.name = `${itemKey}-${i + 1}`;
+/* ===== MTD TYPE (special case, STOP generic logic) ===== */
+if (
+    itemValue.selecttype === "mtd" &&
+    itemValue.mtdstart &&
+    itemValue.mtdtype
+) {
+    const startYear = Number(itemValue.mtdstart.slice(2)); // "011950" → 1950
 
-                    // placeholder
-                    const placeholder = document.createElement("option");
-                    placeholder.value = "";
-                    placeholder.textContent = "Select...";
-                    placeholder.disabled = true;
-                    placeholder.selected = true;
-                    select.appendChild(placeholder);
+    const yearSelect = document.createElement("select");
+    const monthSelect = document.createElement("select");
 
-                    /* ----- LIST TYPE ----- */
-                    if (itemValue.selecttype === "list") {
-                        const list = selectlist[itemKey];
-                        if (list) {
-                            Object.entries(list).forEach(([value, label]) => {
-                                const option = document.createElement("option");
-                                option.value = value;
-                                option.textContent = label;
-                                select.appendChild(option);
-                            });
-                        }
-                    }
+    const addPlaceholder = (select, text) => {
+        const opt = document.createElement("option");
+        opt.value = "";
+        opt.textContent = text;
+        opt.disabled = true;
+        opt.selected = true;
+        select.appendChild(opt);
+    };
 
-                    /* ----- YTD TYPE ----- */
-                    if (
-                        itemValue.selecttype === "ytd" &&
-                        itemValue.ytdstart
-                    ) {
-                        const startYear = Number(itemValue.ytdstart);
+    addPlaceholder(yearSelect, "Year");
+    addPlaceholder(monthSelect, "Month");
 
-                        for (let year = currentYear; year >= startYear; year--) {
-                            const option = document.createElement("option");
-                            option.value = year;
-                            option.textContent = year;
-                            select.appendChild(option);
-                        }
-                    }
+    // populate years
+    for (let y = currentYear; y >= startYear; y--) {
+        const opt = document.createElement("option");
+        opt.value = y;
+        opt.textContent = y;
+        yearSelect.appendChild(opt);
+    }
 
-                    wrapper.appendChild(select);
-                }
-            }
+    const populateMonths = (year) => {
+        monthSelect.innerHTML = "";
+        addPlaceholder(monthSelect, "Month");
 
-            formContainer.appendChild(wrapper);
+        const maxMonth =
+            Number(year) === currentYear ? currentMonth : 12;
+
+        for (let m = 1; m <= maxMonth; m++) {
+            const val = String(m).padStart(2, "0");
+            const opt = document.createElement("option");
+            opt.value = val;
+            opt.textContent = val;
+            monthSelect.appendChild(opt);
+        }
+    };
+
+    yearSelect.addEventListener("change", () => {
+        populateMonths(yearSelect.value);
+    });
+
+    // order
+    if (itemValue.mtdtype === "mmyyyy") {
+        wrapper.appendChild(monthSelect);
+        wrapper.appendChild(yearSelect);
+    } else {
+        wrapper.appendChild(yearSelect);
+        wrapper.appendChild(monthSelect);
+    }
+
+    formContainer.appendChild(wrapper);
+    return; // ✅ IMPORTANT: stop here
+}
+
+/* ===== LIST & YTD (generic select logic) ===== */
+const selectCount = Number(itemValue.select);
+
+for (let i = 0; i < selectCount; i++) {
+    const select = document.createElement("select");
+
+    const placeholder = document.createElement("option");
+    placeholder.value = "";
+    placeholder.textContent = "Select...";
+    placeholder.disabled = true;
+    placeholder.selected = true;
+    select.appendChild(placeholder);
+
+    // LIST
+    if (itemValue.selecttype === "list") {
+        const list = selectlist[itemKey];
+        if (list) {
+            Object.entries(list).forEach(([value, label]) => {
+                const opt = document.createElement("option");
+                opt.value = value;
+                opt.textContent = label;
+                select.appendChild(opt);
+            });
+        }
+    }
+
+    // YTD
+    if (itemValue.selecttype === "ytd" && itemValue.ytdstart) {
+        const startYear = Number(itemValue.ytdstart);
+        for (let y = currentYear; y >= startYear; y--) {
+            const opt = document.createElement("option");
+            opt.value = y;
+            opt.textContent = y;
+            select.appendChild(opt);
+        }
+    }
+
+    wrapper.appendChild(select);
+}
+
+formContainer.appendChild(wrapper);
         });
     });
 });
