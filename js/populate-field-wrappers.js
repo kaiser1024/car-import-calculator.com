@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
          /* ---------- SELECT(S) ---------- */
-if (!isRoot || !itemValue.select) {
+if (!isRoot) {
     formContainer.appendChild(wrapper);
     return;
 }
