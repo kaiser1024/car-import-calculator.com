@@ -30,5 +30,10 @@ main {
     opacity: 0;
 }
 
+.formfield-wrapper-on {
+    height: 3rem;
+    opacity: 1;
+}
+
 
 
