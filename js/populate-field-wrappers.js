@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const currentYear = new Date().getFullYear();
     const currentMonth = new Date().getMonth() + 1;
 
-    Object.entries(formData).forEach(([formID, formFields]) => {
+    Object.entries(formData).forEach(([formID, formField]) => {
 
         const formContainer = document.querySelector(`.${formID}`);
         if (!formContainer) {
@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        Object.entries(formFields).forEach(([itemKey, itemValue]) => {
+        Object.entries(formField).forEach(([itemKey, itemValue]) => {
 
             const formfieldWrapper = document.createElement("div");
             formfieldWrapper.id = itemKey;
