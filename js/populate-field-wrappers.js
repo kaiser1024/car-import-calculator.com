@@ -38,11 +38,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
             /* ---------- MTD ---------- */
             if (
-                itemValue.selecttype === "mtd" &&
-                itemValue.mtdstart &&
-                itemValue.mtdtype
+                questionParameters.selecttype === "mtd" &&
+                questionParameters.mtdstart &&
+                questionParameters.mtdtype
             ) {
-                const startYear = Number(itemValue.mtdstart.slice(2));
+                const startYear = Number(questionParameters.mtdstart.slice(2));
 
                 const yearSelect = document.createElement("select");
                 const monthSelect = document.createElement("select");
