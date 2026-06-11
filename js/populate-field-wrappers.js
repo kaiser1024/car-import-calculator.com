@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const currentYear = new Date().getFullYear();
     const currentMonth = new Date().getMonth() + 1;
 
-    Object.entries(formData).forEach(([formID, questionID]) => {
+    Object.entries(formData).forEach(([formID, questions]) => {
 
         const formContainer = document.querySelector(`.${formID}`);
         if (!formContainer) {
@@ -16,24 +16,24 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        Object.entries(questionID).forEach(([parameterKey, parameterValue]) => {
+        Object.entries(questions).forEach(([questionID, questionParameters]) => {
 
             const formquestionWrapper = document.createElement("div");
             formquestionWrapper.id = questionID;
-            formquestionWrapper.dataset.parent = parameterValue.parent;
+            formquestionWrapper.dataset.parent = questionParameters.parent;
 
-            const isVisible = parameterValue.active && parameterValue.parent === "noparent";
+            const isVisible = questionParameters.active && questionParameters.parent === "noparent";
 
-            formfieldWrapper.className = isVisible
-                ? "formfield-wrapper-on"
-                : "formfield-wrapper";
+            formquestionWrapper.className = isVisible
+                ? "formquestion-wrapper-on"
+                : "formquestion-wrapper";
 
             /* ---------- LABEL ---------- */
-            if (itemValue.label) {
-                const formfieldLabel = document.createElement("label");
-                formfieldLabel.setAttribute("for", itemKey);
-                formfieldLabel.textContent = itemValue.label;
-                formfieldWrapper.appendChild(formfieldLabel);
+            if (questionParameters.questiontext) {
+                const formquestionLabel = document.createElement("label");
+                formquestionLabel.setAttribute("for", questionID);
+                formquestionLabel.textContent = questionParameters.questiontext;
+                formquestionWrapper.appendChild(formquestionLabel);
             }
 
             /* ---------- MTD ---------- */
