@@ -30,10 +30,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
             /* ---------- LABEL ---------- */
             if (itemValue.label) {
-                const label = document.createElement("label");
-                label.setAttribute("for", itemKey);
-                label.textContent = itemValue.label;
-                formfieldWrapper.appendChild(label);
+                const formfieldLabel = document.createElement("label");
+                formfieldLabel.setAttribute("for", itemKey);
+                formfieldLabel.textContent = itemValue.label;
+                formfieldWrapper.appendChild(formfieldLabel);
             }
 
             /* ---------- MTD ---------- */
