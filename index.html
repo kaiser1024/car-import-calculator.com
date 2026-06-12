@@ -96,9 +96,9 @@
     <script>
 const formData = {
     "calcm1de": {
-        "calcm1debrand": { active: true, parent: "noparent", createlabel: true, labeltext: "Make of Car",  select2source: "carmodels" },
+        "calcm1debrand": { active: true, parent: "noparent", createlabel: true, labeltext: "Make of Car",  select1source: "carbrands", select2source: "carmodels" },
         "calcm1deyear": { active: true, parent: "noparent", createlabel: true, labeltext: "Year of Manufacture", numberofselects: "1", select1source: "ytd1950", },
-        "calcm1defirstreg": { active: true, parent: "noparent", questiontext: "Date of First Registration", select: "2", selecttype: "mtd", mtdstart: "011950", mtdtype: "mmyyyy" },
+        "calcm1defirstreg": { active: true, parent: "noparent", createlabel: true, labeltext: "Date of First Registration", select: "2", selecttype: "mtd", mtdstart: "011950", mtdtype: "mmyyyy" },
         "calcm1deot": { active: false, parent: "calcm1deyear", questiontext: "Oldtimer Registration", select: "1", selecttype: "list" },
         "calcm1defuel": { active: true, parent: "noparent", questiontext: "Fuel Type", select: "1", selecttype: "list" }
     },
