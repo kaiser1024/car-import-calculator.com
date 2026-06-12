@@ -1,16 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+    const formContainer = document.querySelector(`.${formID}`);
+
+
     if (typeof formData === "undefined") {
         console.warn("formData is not defined");
         return;
     }
 
-    const currentYear = new Date().getFullYear();
-    const currentMonth = new Date().getMonth() + 1;
-
     Object.entries(formData).forEach(([formID, questions]) => {
 
-        const formContainer = document.querySelector(`.${formID}`);
         if (!formContainer) {
             console.warn(`Missing container: .${formID}`);
             return;
