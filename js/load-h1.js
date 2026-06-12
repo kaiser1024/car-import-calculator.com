@@ -3,16 +3,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (Array.isArray(h1) && h1.length > 0) {
 
-    const section = document.querySelector(".page-topic");
+    const h1Placeholder = document.querySelector(".page-topic");
 
-    const container = document.createElement("div");
-    container.classList.add("h1-container");
+    const h1Container = document.createElement("div");
+    h1Container.classList.add("h1-container");
 
-    const heading = document.createElement("h1");
-    heading.textContent = h1[0];
+    const h1Text = document.createElement("h1");
+    h1Text.textContent = h1[0];
 
-    container.appendChild(heading);
-    section.appendChild(container);
+    h1Container.appendChild(h1Text);
+    h1Placeholder.appendChild(h1Container);
   }
 
 });
