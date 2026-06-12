@@ -96,27 +96,24 @@
     <script>
 const formData = {
     "calcm1de": {
-        "calcm1demake": { active: true, parent: "noparent", questiontext: "Make of Car", select: "1", selecttype: "list" },
-        "calcm1demodel": { active: true, parent: "calcm1demake", questiontext: "Model of Car", select: "1", selecttype: "list" },
-        "calcm1deyear": { active: true, parent: "noparent", questiontext: "Year of Manufacture", select: "1", selecttype: "ytd", ytdstart: "1950" },
+        "calcm1debrand": { active: true, parent: "noparent", createlabel: true, labeltext: "Make of Car",  select2source: "carmodels" },
+        "calcm1deyear": { active: true, parent: "noparent", createlabel: true, labeltext: "Year of Manufacture", numberofselects: "1", select1source: "ytd1950", },
         "calcm1defirstreg": { active: true, parent: "noparent", questiontext: "Date of First Registration", select: "2", selecttype: "mtd", mtdstart: "011950", mtdtype: "mmyyyy" },
         "calcm1deot": { active: false, parent: "calcm1deyear", questiontext: "Oldtimer Registration", select: "1", selecttype: "list" },
         "calcm1defuel": { active: true, parent: "noparent", questiontext: "Fuel Type", select: "1", selecttype: "list" }
     },
 
     "calcm1at": {
-        "calcm1atmake": { active: true, parent: "noparent", questiontext: "Make of Car", select: "1", selecttype: "list" },
-        "calcm1atmodel": { active: true, parent: "calcm1atmake", questiontext: "Model of Car", select: "1", selecttype: "list" },
-        "calcm1atyear": { active: true, parent: "noparent", questiontext: "Year of Manufacture", select: "1", selecttype: "ytd", ytdstart: "1950" },
+        "calcm1atbrand": { active: true, parent: "noparent", createlabel: true, labeltext: "Make of Car", numberofselects: "2", select1source: "carbrands", select2source: "carmodels" },
+        "calcm1atyear": { active: true, parent: "noparent", createlabel: true, labeltext: "Year of Manufacture", numberofselects: "1", select1source: "ytd1950", },
         "calcm1atfirstreg": { active: true, parent: "calcm1atyear", questiontext: "Date of First Registration", select: "2", selecttype: "mtd", mtdstart: "011950", mtdtype: "mmyyyy" },
         "calcm1atot": { active: false, parent: "calcm1atyear", questiontext: "Oldtimer Registration", select: "1", selecttype: "list" },
         "calcm1atfuel": { active: true, parent: "noparent", questiontext: "Fuel Type", select: "1", selecttype: "list" }
     },
 
     "calcm1be": {
-        "calcm1bemake": { active: true, parent: "noparent", questiontext: "Make of Car", select: "1", selecttype: "list" },
-        "calcm1bemodel": { active: true, parent: "calcm1bemake", questiontext: "Model of Car", select: "1", selecttype: "list" },
-        "calcm1beyear": { active: true, parent: "noparent", questiontext: "Year of Manufacture", select: "1", selecttype: "ytd", ytdstart: "1950" },
+        "calcm1bebrand": { active: true, parent: "noparent", createlabel: true, labeltext: "Make of Car", numberofselects: "2", select1source: "carbrands", select2source: "carmodels" },
+        "calcm1beyear":  { active: true, parent: "noparent", createlabel: true, labeltext: "Year of Manufacture", numberofselects: "1", select1source: "ytd1950", },
         "calcm1befirstreg": { active: true, parent: "calcm1beyear", questiontext: "Date of First Registration", select: "2", selecttype: "mtd", mtdstart: "011950", mtdtype: "yyyymm" },
         "calcm1beot": { active: false, parent: "calcm1beyear", questiontext: "Oldtimer Registration", select: "1" },
         "calcm1befuel": { active: true, parent: "noparent", questiontext: "Fuel Type", select: "1", selecttype: "list" }
