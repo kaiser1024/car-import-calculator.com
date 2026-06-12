@@ -1,4 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
+
+  document.title = h1[0];
+
   const h1Placeholder = document.querySelector(".page-topic");
 
   const h1Container = document.createElement("div");
@@ -9,4 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   h1Container.appendChild(h1Text);
   h1Placeholder.appendChild(h1Container);
+
 });
+``
