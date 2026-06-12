@@ -1,24 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const bgimgFormats = ["jpg", "png", "webp", "jpeg", "gif"];
-    const bgimgPath =  /img/background;
+  function addBg() {
+    const bgDiv = document.createElement("div");
+    bgDiv.classList.add("bg");
+    document.body.prepend(bgDiv);
+  }
 
-   function trynextExt(pos) {
-    if (pos >= bgimgFormats.length) return;
+  const img = new Image();
 
-    const bgimgPath = `${bgimgPath}.${bgimgFormats[pos]}`;
-    const bgImg = new Image();
+  img.onload = addBg;
 
-    bgImg.onload = function () {
-      const bgDiv = document.createElement("div");
-      bgDiv.classList.add("bg");
+  img.onerror = function () {
+    const img2 = new Image();
+    img2.onload = addBg;
+    img2.src = "/img/background.png";
+  };
 
-    const htmlBody = document.body;      
-    const bodyFirstchild = htmlBody.firstElementChild;
-
-
-
-
-
-
-
-
+  img.src = "/img/background.jpg";
+});
