@@ -1,20 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   const forms = document.querySelectorAll(".tools form");
-
   const lang = document.documentElement.lang || "en";
 
-  // 🔧 Convert label text into safe ID
   function makeSafeId(text) {
     return text
       .toLowerCase()
-      .normalize("NFD")                 // remove accents
-      .replace(/[\u0300-\u036f]/g, "")  // remove diacritics
-      .replace(/[^a-z0-9]/g, "")        // keep only safe chars
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^a-z0-9]/g, "")
       .trim();
   }
 
-  // 🔧 Traverse calculator structure
   function findPath(tree, path) {
     let current = tree;
 
@@ -29,17 +26,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
   forms.forEach(form => {
 
-    // 🧠 Extract path from class list
     let classes = Array.from(form.classList);
+
+    // ✅ extract country info
+    const fromClass = classes.find(c => c.startsWith("from")) || "";
+    const toClass = classes.find(c => c.startsWith("to")) || "";
+
+    const countryPrefix = `${fromClass}-${toClass}`; // ✅ KEY CHANGE
 
     // remove system classes
     classes = classes.filter(c =>
       c !== "container" &&
       c !== "form" &&
-      c !== "calculator" // root handled separately
+      c !== "calculator"
     );
 
-    // must start from calculator
     if (!form.classList.contains("calculator")) return;
 
     const fields = findPath(calculator, classes);
@@ -49,15 +50,13 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // ✅ Create fields
     fields.forEach(field => {
 
       const labels = field[0];
-      const visibility = field[1];   // onload / onlogic
-      const selectType = field[2];   // "1-select", "2-select"
+      const visibility = field[1];
+      const selectType = field[2];
       const selectIds = field[3];
 
-      // 🌍 Pick label based on language
       let labelText;
 
       if (lang === "en") {
@@ -73,31 +72,27 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       */
 
-      // 🧠 Generate ID from label
-      const baseId = makeSafeId(labelText);
+      // ✅ include country prefix in ID
+      const baseId = `${countryPrefix}-${makeSafeId(labelText)}`;
 
-      // 📦 Field wrapper
       const wrapper = document.createElement("div");
       wrapper.classList.add("field", visibility);
 
-      // 🏷️ Label
       const label = document.createElement("label");
       label.setAttribute("for", baseId);
       label.textContent = labelText;
 
       wrapper.appendChild(label);
 
-      // 🔢 Number of selects
       const selectCount = parseInt(selectType);
 
       for (let i = 0; i < selectCount; i++) {
 
         const select = document.createElement("select");
 
-        // ✅ ID assignment
-        // use provided IDs if exist, otherwise fallback to generated
         if (Array.isArray(selectIds) && selectIds[i]) {
-          select.id = selectIds[i];
+          // ✅ prepend country info to select IDs
+          select.id = `${countryPrefix}-${selectIds[i]}`;
         } else {
           select.id = baseId + (selectCount > 1 ? i + 1 : "");
         }
@@ -105,7 +100,6 @@ document.addEventListener("DOMContentLoaded", () => {
         wrapper.appendChild(select);
       }
 
-      // ➕ Add to form (before button if present)
       const button = form.querySelector("button");
       if (button) {
         form.insertBefore(wrapper, button);
