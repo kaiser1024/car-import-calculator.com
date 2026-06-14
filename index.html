@@ -51,10 +51,78 @@ const elements = [
 ];
 
 const h1 = [ "Car Import Calculator" ];
-    
 
+const calculator = [
+  ["vehicles", [
+    ["m1", [
+      ["import", [
+        ["de", [
+          ["hu", [
+            [
+              ["Car Brand:", "Az autó típusa:"],
+              "onload",
+              "2-select",
+              ["m1brandselector", "m1modelselector"]
+            ],
+            [
+              ["Year of Manufacture:", "Gyártási év:"],
+              "onload",
+              "1-select",
+              ["vehicleyearselector"]
+            ],
+            [
+              ["Date of First Registration:", "Első forgalomba helyezés ideje:"],
+              "onload",
+              "2-select",
+              ["vehiclefirstregyearselector", "vehiclefirstregmonthselector"]
+            ],
+            [
+              ["Fuel Type:", "Meghajtás:"],
+              "onload",
+              "1-select",
+              ["m1fuelselector"]
+            ]
+          ]]
+        ]]
+      ]]
+    ]],
 
-    
+    ["motorcycles", [
+      ["import", [
+        ["motorcycle", [
+          ["de", [
+            ["hu", [
+              [
+                ["Motorcycle Brand:", "A motor típusa:"],
+                "onload",
+                "2-select",
+                ["motobrandselector", "motomodelselector"]
+              ],
+              [
+                ["Year of Manufacture:", "Gyártási év:"],
+                "onload",
+                "1-select",
+                ["vehicleyearselector"]
+              ],
+              [
+                ["Date of First Registration:", "Első forgalomba helyezés ideje:"],
+                "onload",
+                "2-select",
+                ["vehiclefirstregyearselector", "vehiclefirstregmonthselector"]
+              ],
+              [
+                ["Fuel Type:", "Meghajtás:"],
+                "onload",
+                "1-select",
+                ["motofuelselector"]
+              ]
+            ]]
+          ]]
+        ]]
+      ]]
+    ]]
+  ]]
+];
         
 const selectlist = {
     calcm1demake: { audi: "Audi", bmw: "BMW", mercedes: "Mercedes" },
