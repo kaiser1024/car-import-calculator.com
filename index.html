@@ -56,8 +56,8 @@ const calculator = [
   ["vehicles", [
     ["m1", [
       ["import", [
-        ["de", [
-          ["hu", [
+        ["fromde", [
+          ["tohu", [
             [
               ["Car Brand:", "Az autó típusa:"],
               "onload",
@@ -72,7 +72,7 @@ const calculator = [
             ],
             [
               ["Date of First Registration:", "Első forgalomba helyezés ideje:"],
-              "onload",
+              "onlogic",
               "2-select",
               ["vehiclefirstregyearselector", "vehiclefirstregmonthselector"]
             ],
@@ -90,8 +90,8 @@ const calculator = [
     ["motorcycles", [
       ["import", [
         ["motorcycle", [
-          ["de", [
-            ["hu", [
+          ["fromde", [
+            ["tohu", [
               [
                 ["Motorcycle Brand:", "A motor típusa:"],
                 "onload",
@@ -141,7 +141,8 @@ const selectlist = {
     <script src="./js/cache-busting.js"></script>
     <script src="./js/load-bg.js"></script>
     <script src="./js/load-element-form.js"></script> 
-    <script src="./js/load-form-ids.js"></script> 
+    <script src="./js/load-form-ids.js"></script>
+    <script src="./js/load-form-fields.js"></script>
     <script src="./js/load-pagetitle.js"></script>
     <script src="./js/slide-out-header.js"></script>
     <script src="./js/logo-logo.js"></script>
