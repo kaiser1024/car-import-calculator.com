@@ -29,10 +29,11 @@ document.addEventListener("DOMContentLoaded", () => {
     let classes = Array.from(form.classList);
 
     // ✅ extract country info
-    const fromClass = classes.find(c => c.startsWith("from")) || "";
-    const toClass = classes.find(c => c.startsWith("to")) || "";
+   const exportClass = classes.find(c => c.startsWith("coofexp")) || "";
+   const importClass = classes.find(c => c.startsWith("coofimp")) || "";
 
-    const countryPrefix = `${fromClass}-${toClass}`; // ✅ KEY CHANGE
+   const countryPrefix = `${exportClass}-${importClass}`;
+
 
     // remove system classes
     classes = classes.filter(c =>
