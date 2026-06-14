@@ -32,8 +32,9 @@ document.addEventListener("DOMContentLoaded", () => {
    const exportClass = classes.find(c => c.startsWith("coofexp")) || "";
    const importClass = classes.find(c => c.startsWith("coofimp")) || "";
 
-   const countryPrefix = `${exportClass}-${importClass}`;
-
+  const countryPrefix = [exportClass, importClass]
+    .filter(Boolean)
+    .join("-");
 
     // remove system classes
     classes = classes.filter(c =>
@@ -79,14 +80,22 @@ document.addEventListener("DOMContentLoaded", () => {
       const wrapper = document.createElement("div");
       wrapper.classList.add("field", visibility);
 
-      const label = document.createElement("label");
-      label.setAttribute("for", baseId);
+      let firstSelectId;
+
+if (Array.isArray(selectIds) && selectIds[0]) {
+  firstSelectId = `${countryPrefix}-${selectIds[0]}`;
+} else {
+  firstSelectId = baseId;
+}
+
+const label = document.createElement("label");
+label.setAttribute("for", firstSelectId);
       label.textContent = labelText;
 
       wrapper.appendChild(label);
 
-      const selectCount = parseInt(selectType);
-
+      const selectCount = parseInt(selectType.split("-")[0]);
+      
       for (let i = 0; i < selectCount; i++) {
 
         const select = document.createElement("select");
