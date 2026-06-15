@@ -6,8 +6,8 @@
   padding: 0 !important;
 
   transition:
-    opacity 0.65s ease,
-    max-height 0.91s ease,
-    margin 0.81s ease,
-    padding 0.81s ease;
+    opacity 0.91s ease,
+    max-height 0.99s ease,
+    margin 0.99s ease,
+    padding 0.99s ease;
 }
