@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function findPath(tree, path) {
     let current = tree;
 
-    for (let step of path) {
+    for (const step of path) {
       const match = current.find(item => item[0] === step);
       if (!match) return null;
       current = match[1];
@@ -26,113 +26,119 @@ document.addEventListener("DOMContentLoaded", () => {
 
   forms.forEach(form => {
 
+    // ✅ must be calculator form
+    if (!form.classList.contains("calculator")) return;
+
     let classes = Array.from(form.classList);
 
     // ✅ extract country info
-   const exportClass = classes.find(c => c.startsWith("coofexp")) || "";
-   const importClass = classes.find(c => c.startsWith("coofimp")) || "";
+    const exportClass = classes.find(c => c.startsWith("coofexp")) || "";
+    const importClass = classes.find(c => c.startsWith("coofimp")) || "";
 
-  const countryPrefix = [exportClass, importClass]
-    .filter(Boolean)
-    .join("-");
+    const countryPrefix = [exportClass, importClass]
+      .filter(Boolean)
+      .join("-");
 
-    // remove system classes
+    // ✅ strip system classes
     classes = classes.filter(c =>
       c !== "container" &&
       c !== "form" &&
       c !== "calculator"
     );
 
-    if (!form.classList.contains("calculator")) return;
-
     const fields = findPath(calculator, classes);
 
-    if (!fields) {
+    if (!Array.isArray(fields)) {
       console.warn("No matching fields for:", classes);
       return;
     }
 
     fields.forEach(field => {
 
+      /* ----------------------------------------
+         1. READ FIELD STRUCTURE (SAFE)
+      ---------------------------------------- */
+
       const labels = field[0];
       const visibility = field[1];
-      let selectType;
-      let selectIds;
 
-// ✅ NEW STRUCTURE SUPPORT
-if (Array.isArray(field[2])) {
-  selectType = field[2][0];   // "2-select-onchoice"
-  selectIds = field[2][1];    // selectors array
-} else {
-  // fallback (old structure, if ever used)
-  selectType = field[2];
-  selectIds = field[3];
-}
+      let selectType = null;
+      let selectIds = null;
 
-      let labelText;
-
-      if (lang === "en") {
-        labelText = labels[0];
-      } else if (lang === "hu") {
-        labelText = labels[1];
+      // ✅ new unified structure
+      if (Array.isArray(field[2])) {
+        selectType = field[2][0];
+        selectIds = field[2][1];
+      } else {
+        // legacy fallback
+        selectType = field[2];
+        selectIds = field[3];
       }
-      /*
-      else if (lang === "de") {
-        labelText = labels[2];
-      } else if (lang === "fr") {
-        labelText = labels[3];
-      }
-      */
 
-      // ✅ include country prefix in ID
-      const baseId = `${countryPrefix}-${makeSafeId(labelText)}`;
+      if (!selectType) return;
+
+      /* ----------------------------------------
+         2. LABEL TEXT
+      ---------------------------------------- */
+
+      let labelText = labels[0];
+      if (lang === "hu" && labels[1]) labelText = labels[1];
+
+      /* ----------------------------------------
+         3. WRAPPER + LABEL
+      ---------------------------------------- */
 
       const wrapper = document.createElement("div");
       wrapper.classList.add("field", visibility);
 
-      let firstSelectId;
+      const baseId = `${countryPrefix}-${makeSafeId(labelText)}`;
 
-if (Array.isArray(selectIds) && selectIds[0]) {
-  const firstId = Array.isArray(selectIds[0])
-    ? selectIds[0][0]
-    : selectIds[0];
+      let firstSelectId = baseId;
 
-  firstSelectId = `${countryPrefix}-${firstId}`;
-} else {
-  firstSelectId = baseId;
-}
+      if (Array.isArray(selectIds) && selectIds[0]) {
+        const raw = Array.isArray(selectIds[0]) ? selectIds[0][0] : selectIds[0];
+        firstSelectId = `${countryPrefix}-${raw}`;
+      }
 
-const label = document.createElement("label");
-label.setAttribute("for", firstSelectId);
+      const label = document.createElement("label");
+      label.setAttribute("for", firstSelectId);
       label.textContent = labelText;
-
       wrapper.appendChild(label);
 
-    let selectCount = 1;
+      /* ----------------------------------------
+         4. HOW MANY SELECTS?
+      ---------------------------------------- */
 
-    if (typeof selectType === "string") {
-let selectCount = 1;
+      let selectCount = 1;
 
-if (typeof selectType === "string") {
-  const parsed = parseInt(selectType.split("-")[0]);
-  if (!isNaN(parsed)) selectCount = parsed;
-}    }      
+      if (typeof selectType === "string") {
+        const parsed = parseInt(selectType.split("-")[0], 10);
+        if (!isNaN(parsed)) selectCount = parsed;
+      }
+
+      /* ----------------------------------------
+         5. CREATE SELECTS
+      ---------------------------------------- */
+
       for (let i = 0; i < selectCount; i++) {
-
         const select = document.createElement("select");
 
-       if (Array.isArray(selectIds) && selectIds[i]) {
-  const id = Array.isArray(selectIds[i])
-    ? selectIds[i][0]   // NEW STRUCTURE
-    : selectIds[i];     // fallback
+        if (Array.isArray(selectIds) && selectIds[i]) {
+          const rawId = Array.isArray(selectIds[i])
+            ? selectIds[i][0]
+            : selectIds[i];
 
-  select.id = `${countryPrefix}-${id}`;
-} else {
+          select.id = `${countryPrefix}-${rawId}`;
+        } else {
           select.id = baseId + (selectCount > 1 ? i + 1 : "");
         }
 
         wrapper.appendChild(select);
       }
+
+      /* ----------------------------------------
+         6. INSERT INTO FORM
+      ---------------------------------------- */
 
       const button = form.querySelector("button");
       if (button) {
