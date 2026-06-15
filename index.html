@@ -210,6 +210,218 @@ const dependentSelectors = {
 };
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    
+    <link rel="stylesheet" href="./css/defaults.css">
+    <link rel="stylesheet" href="./css/fonts.css">
+    <link rel="stylesheet" href="./css/spacing.css">
+    <link rel="stylesheet" href="./css/colors.css">
+    <link rel="stylesheet" href="./css/topbar.css">
+    <link rel="stylesheet" href="./css/slideout.css">
+    <link rel="stylesheet" href="./css/pagetopic.css">
+    <link rel="stylesheet" href="./css/calculator.css">
+    <link rel="stylesheet" href="./css/testing.css">
+
+    <title></title>
+</head>
+<body>
+
+    <header class="topbar">
+        <div class="container">
+            
+            <ul>
+                <li>
+                    <a href="#" class="logo">
+                        <div class="container"></div>
+                    </a>
+                </li>
+            </ul>
+        
+        </div>
+    </header>
+    
+    <main>
+        <section class="page-topic"></section>
+        <section class="tools"></section>
+        <section class="faq"></section>    
+    </main>
+    <footer>
+    </footer>
+
+<script>
+    
+const elements = [
+  ["h1", "title"],
+  ["form", "calculator", "vehicles", "m1", "import", "coofexpde", "coofimphu"],
+  ["form", "calculator", "vehicles", "motorcycle", "import", "coofexpde", "coofimphu"],
+  ["form", "test", "english", "personality", "dark-triad"],
+  ["form", "quiz", "history", "us-presidents", "other-parameters"]
+];
+
+const h1 = [ "Car Import Calculator" ];
+  
+const calculator = [
+  ["vehicles", [
+
+    ["m1", [
+      ["import", [
+        ["coofexpde", [
+          ["coofimphu", [
+            [
+              ["Car Brand:", "Az autó típusa:"],
+              "onload",
+
+              [
+                "2-select-onchoice",
+                [
+                  ["m1brandselector", "required"],
+                  ["m1modelselector", "optional"]
+                ]
+              ]
+            ],
+
+            [
+              ["Year of Manufacture:", "Gyártási év:"],
+              "onload",
+              [
+                "1-select",
+                [
+                  ["vehicleyearselector", "required"]
+                ]
+              ]
+            ],
+
+            [
+              ["Date of First Registration:", "Első forgalomba helyezés ideje:"],
+              "onlogic",
+              [
+                "2-select",
+                [
+                  ["vehiclefirstregyearselector", "required"],
+                  ["vehiclefirstregmonthselector", "required"]
+                ]
+              ]
+            ],
+
+            [
+              ["Fuel Type:", "Meghajtás:"],
+              "onload",
+              [
+                "1-select",
+                [
+                  ["m1fuelselector", "optional"]
+                ]
+              ]
+            ]
+          ]]
+        ]]
+      ]]
+    ]],
+
+    ["motorcycle", [
+      ["import", [
+        ["coofexpde", [
+          ["coofimphu", [
+            [
+              ["Motorcycle Brand:", "A motor típusa:"],
+              "onload",
+              [
+                "2-select",
+                [
+                  ["motobrandselector", "required"],
+                  ["motomodelselector", "optional"]
+                ]
+              ]
+            ],
+
+            [
+              ["Year of Manufacture:", "Gyártási év:"],
+              "onload",
+              [
+                "1-select",
+                [
+                  ["vehicleyearselector", "required"]
+                ]
+              ]
+            ],
+
+            [
+              ["Date of First Registration:", "Első forgalomba helyezés ideje:"],
+              "onload",
+              [
+                "2-select",
+                [
+                  ["vehiclefirstregyearselector", "required"],
+                  ["vehiclefirstregmonthselector", "required"]
+                ]
+              ]
+            ],
+
+            [
+              ["Fuel Type:", "Meghajtás:"],
+              "onload",
+              [
+                "1-select",
+                [
+                  ["motofuelselector", "optional"]
+                ]
+              ]
+            ]
+          ]]
+        ]]
+      ]]
+    ]]
+
+  ]]
+];
+
+const dependentSelectors = {
+  brandselect: {
+    vehicles: {
+      m1: {
+        options: {
+          audi: {
+            label: "Audi",
+            modelselect: {
+              a1: "A1",
+              a4: "A4",
+              misc: "Not in the list"
+            }
+          },
+
+          bmw: {
+            label: "BMW",
+            modelselect: {
+              "320": "320",
+              "440i": "440i",
+              misc: "Not in the list"
+            }
+          },
+
+          "aston-martin": {
+            label: "Aston Martin",
+            modelselect: {}
+          },
+
+          vw: {
+            label: "Volkswagen",
+            modelselect: {
+              golf: "Golf",
+              passat: "Passat",
+              misc: "Not in the list"
+            }
+          }
+        }
+      }
+    }
+  }
+};
+
+
 const dictionary = {
 
   const dictionary = {
@@ -335,6 +547,31 @@ const dictionary = {
   }
 
 };
+        
+</script>
+    
+    <script src="./js/cache-busting.js"></script>
+    <script src="./js/load-pagetitle.js"></script>
+    
+    <script src="./js/logo-logo.js"></script>
+    <script src="./js/slide-out-header.js"></script>
+
+    <script src="./js/load-element-form.js"></script> 
+    <script src="./js/load-form-classes.js"></script>
+    <script src="./js/load-form-class-lang.js"></script>
+
+    <script src="./js/load-brandselector-vehicles-m1.js"></script>
+    
+ <!--   <script src="./js/load-form-ids.js"></script> -->
+   <!-- <script src="./js/load-onchoice-select.js"></script> -->
+    <!--     <script src="./js/load-bg.js"></script> -->
+
+    
+</body>
+
+
+    
+</html>
         
 </script>
     
