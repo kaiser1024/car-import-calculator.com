@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Create button
       const button = document.createElement("button");
-      button.type = "submit";
+      button.type = "button";
       button.textContent = "Submit";
 
       // Add button inside form (before closing tag)
