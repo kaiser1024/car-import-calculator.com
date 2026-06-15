@@ -56,8 +56,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const labels = field[0];
       const visibility = field[1];
-      const selectType = field[2];
-      const selectIds = field[3];
+      let selectType;
+      let selectIds;
+
+// ✅ NEW STRUCTURE SUPPORT
+if (Array.isArray(field[2])) {
+  selectType = field[2][0];   // "2-select-onchoice"
+  selectIds = field[2][1];    // selectors array
+} else {
+  // fallback (old structure, if ever used)
+  selectType = field[2];
+  selectIds = field[3];
+}
 
       let labelText;
 
