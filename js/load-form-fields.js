@@ -93,15 +93,11 @@ if (Array.isArray(field[2])) {
       let firstSelectId;
 
 if (Array.isArray(selectIds) && selectIds[0]) {
-  if (Array.isArray(selectIds) && selectIds[0]) {
   const firstId = Array.isArray(selectIds[0])
     ? selectIds[0][0]
     : selectIds[0];
 
   firstSelectId = `${countryPrefix}-${firstId}`;
-} else {
-  firstSelectId = baseId;
-}
 } else {
   firstSelectId = baseId;
 }
@@ -115,8 +111,12 @@ label.setAttribute("for", firstSelectId);
     let selectCount = 1;
 
     if (typeof selectType === "string") {
-      selectCount = parseInt(selectType.split("-")[0]) || 1;
-    }      
+let selectCount = 1;
+
+if (typeof selectType === "string") {
+  const parsed = parseInt(selectType.split("-")[0]);
+  if (!isNaN(parsed)) selectCount = parsed;
+}    }      
       for (let i = 0; i < selectCount; i++) {
 
         const select = document.createElement("select");
