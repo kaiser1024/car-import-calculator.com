@@ -167,38 +167,49 @@ const calculator = [
   ]]
 ];
 
-const brandselector = {
-  placeholder: "Select the brand of your car",
-  options: {
-    audi: "Audi",
-    bmw: "BMW",
-    "aston-martin": "Aston Martin",
-    vw: "Volkswagen"
-  }
-};
+const dependentSelectors = {
+  brandselect: {
+    vehicles: {
+      m1: {
+        placeholder: "Select the brand of your car",
 
+        options: {
+          audi: {
+            label: "Audi",
+            models: {
+              a1: "A1",
+              a4: "A4",
+              misc: "Not in the list"
+            }
+          },
 
-const modelselector = {
-  placeholder: "Select the model",
-  options: {
-    audi: {
-      a1: "A1",
-      a4: "A4",
-      misc: "Not in the list"
-    },
-    bmw: {
-      "320": "320",
-      "440i": "440i",
-      misc: "Not in the list"
-    },
-    vw: {
-      golf: "Golf",
-      passat: "Passat",
-      misc: "Not in the list"
+          bmw: {
+            label: "BMW",
+            models: {
+              "320": "320",
+              "440i": "440i",
+              misc: "Not in the list"
+            }
+          },
+
+          "aston-martin": {
+            label: "Aston Martin",
+            models: {} // no models defined yet
+          },
+
+          vw: {
+            label: "Volkswagen",
+            models: {
+              golf: "Golf",
+              passat: "Passat",
+              misc: "Not in the list"
+            }
+          }
+        }
+      }
     }
   }
 };
-
         
 </script>
     
