@@ -7,43 +7,52 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const forms = document.querySelectorAll("form");
 
-  Object.keys(dictionary.formtitles).forEach(formKey => {
+  // level 1: vehicle type (m1, moto)
+  Object.keys(dictionary.formtitles).forEach(vehicleKey => {
 
-    const translations = dictionary.formtitles[formKey];
-    if (!translations) return;
+    const vehicleGroup = dictionary.formtitles[vehicleKey];
+    if (!vehicleGroup) return;
 
-    forms.forEach(form => {
+    // level 2: export country (coofexpbe, coofexpde)
+    Object.keys(vehicleGroup).forEach(countryKey => {
 
-      // ✅ form must have the class matching the formKey
-      if (!form.classList.contains(formKey)) return;
+      const translations = vehicleGroup[countryKey];
+      if (!translations) return;
 
-      // ✅ avoid duplicates
-      if (form.previousElementSibling?.classList.contains("form-title")) {
-        return;
-      }
+      forms.forEach(form => {
 
-      // ✅ determine language from form class
-      const langClass = Array.from(form.classList)
-        .find(cls => cls.startsWith("lang-"));
+        // ✅ form must match BOTH classes
+        if (!form.classList.contains(vehicleKey)) return;
+        if (!form.classList.contains(countryKey)) return;
 
-      const lang = langClass
-        ? langClass.replace("lang-", "")
-        : "en";
+        // ✅ avoid duplicate titles
+        if (form.previousElementSibling?.classList.contains("form-title")) {
+          return;
+        }
 
-      const titleText = translations[lang] || translations["en"];
-      if (!titleText) return;
+        // ✅ resolve language from form class
+        const langClass = Array.from(form.classList)
+          .find(cls => cls.startsWith("lang-"));
 
-      // ✅ build title DOM
-      const wrapper = document.createElement("div");
-      wrapper.classList.add("form-title");
+        const lang = langClass
+          ? langClass.replace("lang-", "")
+          : "en";
 
-      const heading = document.createElement("h2");
-      heading.textContent = titleText;
+        const titleText = translations[lang] || translations["en"];
+        if (!titleText) return;
 
-      wrapper.appendChild(heading);
+        // ✅ build DOM
+        const wrapper = document.createElement("div");
+        wrapper.classList.add("form-title");
 
-      // ✅ insert before form
-      form.parentNode.insertBefore(wrapper, form);
+        const heading = document.createElement("h2");
+        heading.textContent = titleText;
+
+        wrapper.appendChild(heading);
+
+        // ✅ insert before form
+        form.parentNode.insertBefore(wrapper, form);
+      });
     });
   });
 
