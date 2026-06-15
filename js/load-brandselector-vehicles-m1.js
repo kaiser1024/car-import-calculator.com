@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
     wrapper.appendChild(select);
 
     // ✅ INSERT BEFORE BUTTON
-    const button = form.querySelector("button[type='submit'], button");
+    const button = form.querySelector("button[type='button'], button");
 
     if (button) {
       form.insertBefore(wrapper, button);
