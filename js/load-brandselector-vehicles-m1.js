@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   forms.forEach(form => {
 
-    if (!form.classList.contains("vehicle")) return;
+    if (!form.classList.contains("vehicles")) return;
     if (!form.classList.contains("m1")) return;
 
     if (form.querySelector("#brandselect")) return;
