@@ -14,7 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const label = document.createElement("label");
     label.setAttribute("for", "brandselect");
-    label.textContent = "Brand";
 
     const select = document.createElement("select");
     select.id = "brandselect";
