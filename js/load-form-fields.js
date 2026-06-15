@@ -93,7 +93,15 @@ if (Array.isArray(field[2])) {
       let firstSelectId;
 
 if (Array.isArray(selectIds) && selectIds[0]) {
-  firstSelectId = `${countryPrefix}-${selectIds[0]}`;
+  if (Array.isArray(selectIds) && selectIds[0]) {
+  const firstId = Array.isArray(selectIds[0])
+    ? selectIds[0][0]
+    : selectIds[0];
+
+  firstSelectId = `${countryPrefix}-${firstId}`;
+} else {
+  firstSelectId = baseId;
+}
 } else {
   firstSelectId = baseId;
 }
@@ -104,16 +112,22 @@ label.setAttribute("for", firstSelectId);
 
       wrapper.appendChild(label);
 
-      const selectCount = parseInt(selectType.split("-")[0]);
-      
+    let selectCount = 1;
+
+    if (typeof selectType === "string") {
+      selectCount = parseInt(selectType.split("-")[0]) || 1;
+    }      
       for (let i = 0; i < selectCount; i++) {
 
         const select = document.createElement("select");
 
-        if (Array.isArray(selectIds) && selectIds[i]) {
-          // ✅ prepend country info to select IDs
-          select.id = `${countryPrefix}-${selectIds[i]}`;
-        } else {
+       if (Array.isArray(selectIds) && selectIds[i]) {
+  const id = Array.isArray(selectIds[i])
+    ? selectIds[i][0]   // NEW STRUCTURE
+    : selectIds[i];     // fallback
+
+  select.id = `${countryPrefix}-${id}`;
+} else {
           select.id = baseId + (selectCount > 1 ? i + 1 : "");
         }
 
