@@ -8,8 +8,27 @@ document.addEventListener("DOMContentLoaded", () => {
     button.addEventListener("click", (e) => {
       e.preventDefault(); // ✅ prevent submit / reload
 
-      forms.forEach(form => {
-        form.classList.add("hide-on-submit");
+      // ✅ find the form this button belongs to
+      const form = button.closest("form");
+      if (!form) return;
+
+      // ✅ check for any select with placeholder still selected
+      const selects = form.querySelectorAll("select");
+
+      const hasPlaceholder = Array.from(selects).some(select => {
+        const option = select.options[select.selectedIndex];
+        return (
+          select.value === "" ||
+          (option && option.id === "placeholder")
+        );
+      });
+
+      // ❌ if any placeholder found → STOP HERE
+      if (hasPlaceholder) return;
+
+      // ✅ otherwise hide everything
+      forms.forEach(f => {
+        f.classList.add("hide-on-submit");
       });
 
       formTitles.forEach(title => {
