@@ -6,13 +6,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   buttons.forEach(button => {
     button.addEventListener("click", (e) => {
-      e.preventDefault(); // ✅ prevent submit / reload
+      e.preventDefault();
 
-      // ✅ find the form this button belongs to
+      // ✅ 1. scope validation to the clicked form only
       const form = button.closest("form");
       if (!form) return;
 
-      // ✅ check for any select with placeholder still selected
       const selects = form.querySelectorAll("select");
 
       const hasPlaceholder = Array.from(selects).some(select => {
@@ -23,10 +22,10 @@ document.addEventListener("DOMContentLoaded", () => {
         );
       });
 
-      // ❌ if any placeholder found → STOP HERE
+      // ❌ 2. if THIS form is invalid → STOP
       if (hasPlaceholder) return;
 
-      // ✅ otherwise hide everything
+      // ✅ 3. THIS form is valid → hide EVERYTHING
       forms.forEach(f => {
         f.classList.add("hide-on-submit");
       });
