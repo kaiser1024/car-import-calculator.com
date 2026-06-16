@@ -1,7 +1,7 @@
-// create <title> only if DB.title exists
+// create <title> only if DB.pagetitle exists
 
-if (window.DB && window.DB.title) {
-  const titleEl = document.createElement('title');
-  titleEl.textContent = window.DB.title;
-  document.head.appendChild(titleEl);
+if (window.DB && window.DB.pagetitle) {
+  const titleHtml = document.createElement('title');
+  titleHtml.textContent = window.DB.pagetitle;
+  document.head.appendChild(titleHtml);
 }
