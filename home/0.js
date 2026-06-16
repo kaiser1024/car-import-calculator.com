@@ -1,6 +1,6 @@
 // load CSS
 const cssScript = document.createElement('script');
-cssScript.src = './js/css.js';
+cssScript.src = 'css.js';
 document.head.appendChild(cssScript);
 
 // load DB
