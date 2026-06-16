@@ -5,8 +5,8 @@ const cssFiles = [
 ];
 
 cssFiles.forEach(cssFile => {
-  const cssfilesLink = document.createElement('link');
-  cssfilesLink.rel = 'stylesheet';
-  cssfilesLink.href = `/css/${file}`;
-  document.head.appendChild(link);
+  const cssFilesLink = document.createElement('link');
+  cssFilesLink.rel = 'stylesheet';
+  cssFilesLink.href = `/css/${cssFile}`;
+  document.head.appendChild(cssFilesLink);
 });
