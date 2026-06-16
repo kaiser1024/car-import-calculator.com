@@ -1,4 +1,9 @@
-const script = document.createElement('script');
-script.src = './js/css.js';
+// load CSS
+const cssScript = document.createElement('script');
+cssScript.src = './js/css.js';
+document.head.appendChild(cssScript);
 
-document.head.appendChild(script);
+// load DB
+const dbScript = document.createElement('script');
+dbScript.src = './js/db.js';
+document.head.appendChild(dbScript);
