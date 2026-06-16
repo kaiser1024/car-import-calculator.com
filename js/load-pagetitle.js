@@ -1,17 +1,14 @@
-document.addEventListener("DOMContentLoaded", () => {
+let lang = document.documentElement.lang.toLowerCase();
 
-  document.title = h1[0];
+if (!dictionary.pagetitle[lang]) {
+  lang = lang.split('-')[0];
+}
 
-  const h1Placeholder = document.querySelector(".page-topic");
+if (!dictionary.pagetitle[lang]) {
+  lang = 'en';
+}
 
-  const h1Container = document.createElement("div");
-  h1Container.classList.add("h1-container");
-
-  const h1Text = document.createElement("h1");
-  h1Text.textContent = h1[0];
-
-  h1Container.appendChild(h1Text);
-  h1Placeholder.appendChild(h1Container);
-
-});
-``
+const titleText = dictionary.pagetitle[lang];
+if (titleText) {
+  document.title = titleText;
+}
