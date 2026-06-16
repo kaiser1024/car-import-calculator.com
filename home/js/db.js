@@ -1,7 +1,7 @@
 window.DB = {
   language: 'en',
 
-  title: {
+  pagetitle: {
     en: 'This is the Page Title',
     de: 'Dies ist der Seitentitel',
     fr: 'Ceci est le titre de la page',
