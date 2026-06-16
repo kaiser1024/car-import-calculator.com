@@ -7,3 +7,8 @@ document.head.appendChild(cssScript);
 const dbScript = document.createElement('script');
 dbScript.src = './js/db.js';
 document.head.appendChild(dbScript);
+
+// load HTML manager
+const htmlScript = document.createElement('script');
+htmlScript.src = './js/html.js';
+document.head.appendChild(htmlScript);
