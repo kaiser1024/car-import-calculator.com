@@ -4,9 +4,9 @@ const cssFiles = [
   '0.css' // placeholder
 ];
 
-cssFiles.forEach(file => {
-  const link = document.createElement('link');
-  link.rel = 'stylesheet';
-  link.href = `/css/${file}`;
+cssFiles.forEach(cssFile => {
+  const cssfilesLink = document.createElement('link');
+  cssfilesLink.rel = 'stylesheet';
+  cssfilesLink.href = `/css/${file}`;
   document.head.appendChild(link);
 });
