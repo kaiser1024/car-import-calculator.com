@@ -1,0 +1,74 @@
+WORKFLOWS - FINITE BEGINNING TO FINITE END
+
+1. Architecture: Stack 
+
+	- Stage #1: HTML, JS, CSS, DB (window.x in .js)
+	- Stage #2: Weberver side DB, PHP
+	- Stage #3: Virtual server (Python, C)
+	- Stage #4: AI Agent
+
+
+2. Architecture: Stack Responsibilites
+	- HTML: provide starting point + DOM representation
+	- DOM: as tree, as graph, as state container of UI
+	- JS: 
+		a. scan DOM structure
+		a. manipulate DOM 
+		b. select elements
+		c. code logical operations
+	- what css does
+	- when server side is plugged in
+
+2. Architecture: Building blocks
+
+	- frame: boilerplate
+	- logical units: 
+		a. instrumental containers (<header></header><form></form><footer></footer>
+		b. interpretive containers (<section name
+
+3. Architecture: Relationships
+	- effects
+	- methods
+	- elements
+	- conditions
+	consequences
+
+	- effects
+	- methods
+	- elements
+	- conditions
+	consequences
+
+0 
+
+3. Build: Selectors:
+
+	- id → JavaScript targeting / anchoring only
+		* Use for: getElementById, fragment links (#section). Do not use for styling
+	- class → visual styling
+		→ layout grouping
+		* Don't use for JS logic or state
+	- name → passing value to backend
+		* Don't use for JS or styling
+	- title → user-facing descriptive tooltip text only
+		* Don't use for hidden data storage or selection hooks
+	- type → intrinsic element behavior definition only
+		*Don't use for styling variants or JS branching
+	- value → form/input value only
+		*Do NOT use for: storing app data or selection
+	- href → navigation target only
+		*Do NOT use for: JS routing flags or behavior triggers
+		(avoid href="#" + JS logic as primary mechanism)
+	
+3. Testing
+
+	- DOM tree validation
+	- trivial unwanted behavior filtering
+	- automated testing for nested conditional logic for all iterations
+
+	- 
+
+
+*** STATE ***
+
+Defining creation method - NOT CREATING to produce outcome, only to test methods
